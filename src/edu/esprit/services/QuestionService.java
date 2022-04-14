@@ -5,10 +5,9 @@
  */
 package edu.esprit.services;
 
-import edu.esprit.entities.Questions;
-import edu.esprit.entities.Reponses;
-import edu.esprit.entities.Salle;
-import edu.esprit.tools.Connexion;
+import edu.forum.entities.Questions;
+import edu.forum.entities.Reponses;
+import edu.forum.tools.Connexion;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
