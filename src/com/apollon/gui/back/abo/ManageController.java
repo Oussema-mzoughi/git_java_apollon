@@ -1,9 +1,8 @@
-package com.apollon.gui.front.abo;
+package com.apollon.gui.back.abo;
 
 import com.apollon.entities.Abo;
-import com.apollon.gui.front.MainWindowController;
+import com.apollon.gui.back.MainWindowController;
 import com.apollon.services.AboService;
-import com.apollon.services.RdvService;
 import com.apollon.utils.AlertUtils;
 import com.apollon.utils.Constants;
 import com.apollon.utils.RelationObject;
@@ -12,25 +11,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ManageController implements Initializable {
 
-    @FXML
-    public DatePicker createdAtDP;
     @FXML
     public ComboBox<RelationObject> userIdCB;
     @FXML
     public ComboBox<RelationObject> sdpIdCB;
     @FXML
     public TextField dureeTF;
-    @FXML
-    public TextField etatTF;
     @FXML
     public Button btnAjout;
     @FXML
@@ -55,12 +50,9 @@ public class ManageController implements Initializable {
             btnAjout.setText("Modifier");
 
             try {
-                createdAtDP.setValue(currentAbo.getCreatedAt());
                 userIdCB.setValue(currentAbo.getUser());
                 sdpIdCB.setValue(currentAbo.getSdp());
                 dureeTF.setText(currentAbo.getDuree());
-                etatTF.setText(currentAbo.getEtat());
-
             } catch (NullPointerException ignored) {
                 System.out.println("Champ null");
             }
@@ -75,11 +67,11 @@ public class ManageController implements Initializable {
 
         if (controleDeSaisie()) {
             Abo abo = new Abo(
-                    createdAtDP.getValue(),
+                    LocalDate.now(),
                     userIdCB.getValue(),
                     sdpIdCB.getValue(),
                     dureeTF.getText(),
-                    etatTF.getText()
+                    "1"
             );
 
             if (currentAbo == null) {
@@ -89,6 +81,7 @@ public class ManageController implements Initializable {
                     AlertUtils.makeError("Could not add abo");
                 }
             } else {
+                abo.setCreatedAt(currentAbo.getCreatedAt());
                 abo.setId(currentAbo.getId());
                 if (AboService.getInstance().edit(abo)) {
                     AlertUtils.makeInformation("Abo modifié avec succés");
@@ -103,11 +96,6 @@ public class ManageController implements Initializable {
 
     private boolean controleDeSaisie() {
 
-        if (createdAtDP.getValue() == null) {
-            AlertUtils.makeInformation("Choisir une date pour createdAt");
-            return false;
-        }
-
         if (userIdCB.getValue() == null) {
             AlertUtils.makeInformation("userId ne doit pas etre vide");
             return false;
@@ -120,11 +108,6 @@ public class ManageController implements Initializable {
 
         if (dureeTF.getText().isEmpty()) {
             AlertUtils.makeInformation("duree ne doit pas etre vide");
-            return false;
-        }
-
-        if (etatTF.getText().isEmpty()) {
-            AlertUtils.makeInformation("etat ne doit pas etre vide");
             return false;
         }
 

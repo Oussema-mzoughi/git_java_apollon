@@ -35,7 +35,7 @@ public class AboService {
                 listAbo.add(new Abo(
                         resultSet.getInt("id"),
                         LocalDate.parse(String.valueOf(resultSet.getDate("created_at"))),
-                        new RelationObject(resultSet.getInt("user_id"), resultSet.getString("u.nom")),
+                        new RelationObject(resultSet.getInt("user_id"), resultSet.getString("u.email")),
                         new RelationObject(resultSet.getInt("sdp_id"), resultSet.getString("s.nom_salle")),
                         resultSet.getString("duree"),
                         resultSet.getString("etat")

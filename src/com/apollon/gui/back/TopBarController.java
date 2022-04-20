@@ -1,4 +1,4 @@
-package com.apollon.gui.front;
+package com.apollon.gui.back;
 
 import com.apollon.utils.Animations;
 import com.apollon.utils.Constants;

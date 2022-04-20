@@ -35,10 +35,10 @@ public class RdvService {
             while (resultSet.next()) {
                 listRdv.add(new Rdv(
                         resultSet.getInt("id"),
-                        new RelationObject(resultSet.getInt("user_id"), resultSet.getString("u.nom")),
-                        resultSet.getInt("partenaire_id"),
-                        LocalDate.parse(String.valueOf(resultSet.getDate("debut"))),
-                        LocalDate.parse(String.valueOf(resultSet.getDate("fin"))),
+                        new RelationObject(resultSet.getInt("user_id"), resultSet.getString("u.email")),
+                        new RelationObject(resultSet.getInt("partenaire_id"), resultSet.getString("u.email")),
+                        LocalDateTime.of(resultSet.getDate("debut").toLocalDate(), resultSet.getTime("debut").toLocalTime()),
+                        LocalDateTime.of(resultSet.getDate("fin").toLocalDate(), resultSet.getTime("fin").toLocalTime()),
                         resultSet.getInt("etat"),
                         LocalDateTime.of(resultSet.getDate("created_at").toLocalDate(), resultSet.getTime("created_at").toLocalTime()),
                         LocalDateTime.of(resultSet.getDate("updated_at").toLocalDate(), resultSet.getTime("updated_at").toLocalTime())
@@ -70,9 +70,9 @@ public class RdvService {
             preparedStatement = connection.prepareStatement(request);
 
             preparedStatement.setInt(1, rdv.getUser().getId());
-            preparedStatement.setInt(2, rdv.getPartenaireId());
-            preparedStatement.setDate(3, Date.valueOf(rdv.getDebut()));
-            preparedStatement.setDate(4, Date.valueOf(rdv.getFin()));
+            preparedStatement.setInt(2, rdv.getPartenaire().getId());
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(rdv.getDebut()));
+            preparedStatement.setTimestamp(4, Timestamp.valueOf(rdv.getFin()));
             preparedStatement.setInt(5, rdv.getEtat());
             preparedStatement.setTimestamp(6, Timestamp.valueOf(rdv.getCreatedAt()));
             preparedStatement.setTimestamp(7, Timestamp.valueOf(rdv.getUpdatedAt()));
@@ -92,9 +92,9 @@ public class RdvService {
             preparedStatement = connection.prepareStatement(request);
 
             preparedStatement.setInt(1, rdv.getUser().getId());
-            preparedStatement.setInt(2, rdv.getPartenaireId());
-            preparedStatement.setDate(3, Date.valueOf(rdv.getDebut()));
-            preparedStatement.setDate(4, Date.valueOf(rdv.getFin()));
+            preparedStatement.setInt(2, rdv.getPartenaire().getId());
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(rdv.getDebut()));
+            preparedStatement.setTimestamp(4, Timestamp.valueOf(rdv.getFin()));
             preparedStatement.setInt(5, rdv.getEtat());
             preparedStatement.setTimestamp(6, Timestamp.valueOf(rdv.getCreatedAt()));
             preparedStatement.setTimestamp(7, Timestamp.valueOf(rdv.getUpdatedAt()));

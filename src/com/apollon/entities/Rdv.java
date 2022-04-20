@@ -1,25 +1,25 @@
 package com.apollon.entities;
 
+import com.apollon.gui.back.rdv.ShowAllController;
 import com.apollon.utils.RelationObject;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Rdv {
+public class Rdv implements Comparable<Rdv> {
 
     private int id;
     private RelationObject userId;
-    private int partenaireId;
-    private LocalDate debut;
-    private LocalDate fin;
+    private RelationObject partenaire;
+    private LocalDateTime debut;
+    private LocalDateTime fin;
     private int etat;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Rdv(int id, RelationObject userId, int partenaireId, LocalDate debut, LocalDate fin, int etat, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Rdv(int id, RelationObject userId, RelationObject partenaire, LocalDateTime debut, LocalDateTime fin, int etat, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.userId = userId;
-        this.partenaireId = partenaireId;
+        this.partenaire = partenaire;
         this.debut = debut;
         this.fin = fin;
         this.etat = etat;
@@ -27,9 +27,9 @@ public class Rdv {
         this.updatedAt = updatedAt;
     }
 
-    public Rdv(RelationObject userId, int partenaireId, LocalDate debut, LocalDate fin, int etat, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Rdv(RelationObject userId, RelationObject partenaire, LocalDateTime debut, LocalDateTime fin, int etat, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.userId = userId;
-        this.partenaireId = partenaireId;
+        this.partenaire = partenaire;
         this.debut = debut;
         this.fin = fin;
         this.etat = etat;
@@ -53,27 +53,27 @@ public class Rdv {
         this.userId = userId;
     }
 
-    public int getPartenaireId() {
-        return partenaireId;
+    public RelationObject getPartenaire() {
+        return partenaire;
     }
 
-    public void setPartenaireId(int partenaireId) {
-        this.partenaireId = partenaireId;
+    public void setPartenaire(RelationObject partenaire) {
+        this.partenaire = partenaire;
     }
 
-    public LocalDate getDebut() {
+    public LocalDateTime getDebut() {
         return debut;
     }
 
-    public void setDebut(LocalDate debut) {
+    public void setDebut(LocalDateTime debut) {
         this.debut = debut;
     }
 
-    public LocalDate getFin() {
+    public LocalDateTime getFin() {
         return fin;
     }
 
-    public void setFin(LocalDate fin) {
+    public void setFin(LocalDateTime fin) {
         this.fin = fin;
     }
 
@@ -106,12 +106,30 @@ public class Rdv {
         return "Rdv{" +
                 "id=" + id +
                 ", userId=" + userId +
-                ", partenaireId=" + partenaireId +
+                ", partenaire=" + partenaire +
                 ", debut=" + debut +
                 ", fin=" + fin +
                 ", etat=" + etat +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Rdv rdv) {
+        switch (ShowAllController.compareVar) {
+            case "partenaire":
+                return this.getPartenaire().getName().compareTo(rdv.getPartenaire().getName());
+            case "Date de debut":
+                return this.getDebut().compareTo(rdv.getDebut());
+            case "Date de fin":
+                return this.getFin().compareTo(rdv.getFin());
+            case "createdAt":
+                return this.getCreatedAt().compareTo(rdv.getCreatedAt());
+            case "updatedAt":
+                return this.getUpdatedAt().compareTo(rdv.getUpdatedAt());
+            default:
+                return 0;
+        }
     }
 }

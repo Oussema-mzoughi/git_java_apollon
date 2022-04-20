@@ -1,7 +1,7 @@
-package com.apollon.gui.front.rdv;
+package com.apollon.gui.back.rdv;
 
 import com.apollon.entities.Rdv;
-import com.apollon.gui.front.MainWindowController;
+import com.apollon.gui.back.MainWindowController;
 import com.apollon.services.RdvService;
 import com.apollon.utils.AlertUtils;
 import com.apollon.utils.Constants;
@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -26,6 +27,7 @@ import java.util.*;
 
 public class ShowAllController implements Initializable {
 
+    public static String compareVar;
     public static Rdv currentRdv;
 
     @FXML
@@ -34,10 +36,22 @@ public class ShowAllController implements Initializable {
     public Button addButton;
     @FXML
     public VBox mainVBox;
+    @FXML
+    public ComboBox<String> sortCB;
+
+    List<Rdv> listRdv;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<Rdv> listRdv = RdvService.getInstance().getAll();
+        listRdv = RdvService.getInstance().getAll();
+
+        sortCB.getItems().addAll("partenaire", "Date de debut", "Date de fin", "createdAt", "updatedAt");
+        displayData();
+    }
+
+    void displayData() {
+        mainVBox.getChildren().clear();
+
         Collections.reverse(listRdv);
 
         if (!listRdv.isEmpty()) {
@@ -62,10 +76,9 @@ public class ShowAllController implements Initializable {
 
             HBox innerContainer = ((HBox) ((AnchorPane) ((AnchorPane) parent).getChildren().get(0)).getChildren().get(0));
             ((Text) innerContainer.lookup("#userIdText")).setText("UserId : " + rdv.getUser().getName());
-            ((Text) innerContainer.lookup("#partenaireIdText")).setText("PartenaireId : " + rdv.getPartenaireId());
+            ((Text) innerContainer.lookup("#partenaireText")).setText("Partenaire : " + rdv.getPartenaire());
             ((Text) innerContainer.lookup("#debutText")).setText("Debut : " + rdv.getDebut());
             ((Text) innerContainer.lookup("#finText")).setText("Fin : " + rdv.getFin());
-            ((Text) innerContainer.lookup("#etatText")).setText("Etat : " + rdv.getEtat());
             ((Text) innerContainer.lookup("#createdAtText")).setText("CreatedAt : " + rdv.getCreatedAt());
             ((Text) innerContainer.lookup("#updatedAtText")).setText("UpdatedAt : " + rdv.getUpdatedAt());
 
@@ -107,5 +120,12 @@ public class ShowAllController implements Initializable {
                 }
             }
         }
+    }
+
+    @FXML
+    public void sort(ActionEvent actionEvent) {
+        compareVar = sortCB.getValue();
+        Collections.sort(listRdv);
+        displayData();
     }
 }

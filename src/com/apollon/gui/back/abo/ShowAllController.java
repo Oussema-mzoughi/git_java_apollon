@@ -1,7 +1,7 @@
-package com.apollon.gui.front.abo;
+package com.apollon.gui.back.abo;
 
 import com.apollon.entities.Abo;
-import com.apollon.gui.front.MainWindowController;
+import com.apollon.gui.back.MainWindowController;
 import com.apollon.services.AboService;
 import com.apollon.utils.AlertUtils;
 import com.apollon.utils.Constants;
@@ -14,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -34,15 +36,27 @@ public class ShowAllController implements Initializable {
     public Button addButton;
     @FXML
     public VBox mainVBox;
+    @FXML
+    public TextField searchTF;
+
+    List<Abo> listAbo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<Abo> listAbo = AboService.getInstance().getAll();
+        listAbo = AboService.getInstance().getAll();
+        displayData("");
+    }
+
+    void displayData(String searchText) {
+        mainVBox.getChildren().clear();
+
         Collections.reverse(listAbo);
 
         if (!listAbo.isEmpty()) {
             for (Abo abo : listAbo) {
-                mainVBox.getChildren().add(makeAboModel(abo));
+                if (abo.getSdp().getName().toLowerCase().startsWith(searchText.toLowerCase())) {
+                    mainVBox.getChildren().add(makeAboModel(abo));
+                }
             }
         } else {
             StackPane stackPane = new StackPane();
@@ -62,10 +76,9 @@ public class ShowAllController implements Initializable {
 
             HBox innerContainer = ((HBox) ((AnchorPane) ((AnchorPane) parent).getChildren().get(0)).getChildren().get(0));
             ((Text) innerContainer.lookup("#createdAtText")).setText("CreatedAt : " + abo.getCreatedAt());
-            ((Text) innerContainer.lookup("#userIdText")).setText("UserId : " + abo.getUser().getName());
-            ((Text) innerContainer.lookup("#sdpIdText")).setText("SdpId : " + abo.getSdp().getName());
+            ((Text) innerContainer.lookup("#userIdText")).setText("Utilisateur : " + abo.getUser().getName());
+            ((Text) innerContainer.lookup("#sdpIdText")).setText("Salle de sport : " + abo.getSdp().getName());
             ((Text) innerContainer.lookup("#dureeText")).setText("Duree : " + abo.getDuree());
-            ((Text) innerContainer.lookup("#etatText")).setText("Etat : " + abo.getEtat());
 
             ((Button) innerContainer.lookup("#editButton")).setOnAction((event) -> modifierAbo(abo));
             ((Button) innerContainer.lookup("#deleteButton")).setOnAction((event) -> supprimerAbo(abo));
@@ -74,6 +87,11 @@ public class ShowAllController implements Initializable {
             System.out.println(ex.getMessage());
         }
         return parent;
+    }
+
+    @FXML
+    private void search(KeyEvent event) {
+        displayData(searchTF.getText());
     }
 
     @FXML

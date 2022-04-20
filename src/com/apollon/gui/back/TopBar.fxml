@@ -9,7 +9,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainComponent" minHeight="-Infinity" prefHeight="60.0"
             prefWidth="418.0"
             AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171"
-            fx:controller="com.apollon.gui.front.TopBarController">
+            fx:controller="com.apollon.gui.back.TopBarController">
     <HBox layoutX="16.0" prefHeight="30.0" prefWidth="451.0" spacing="15.0" stylesheets="@../../utils/MainStyle.css"
           AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="15.0">
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="apollon" wrappingWidth="150">
@@ -18,7 +18,7 @@
             </font>
         </Text>
         <Button fx:id="btnAbos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                mnemonicParsing="false" onAction="#afficherAbos" text="Abos" textFill="WHITE">
+                mnemonicParsing="false" onAction="#afficherAbos" text="Abonnements" textFill="WHITE">
             <HBox.margin>
                 <Insets/>
             </HBox.margin>
@@ -30,7 +30,7 @@
             </cursor>
         </Button>
         <Button fx:id="btnRdvs" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                mnemonicParsing="false" onAction="#afficherRdvs" text="Rdvs" textFill="WHITE">
+                mnemonicParsing="false" onAction="#afficherRdvs" text="Rendez vous" textFill="WHITE">
             <HBox.margin>
                 <Insets/>
             </HBox.margin>
