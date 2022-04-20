@@ -77,7 +77,26 @@ public class AboService {
         return listUsers;
     }
 
+    public boolean checkExist(Abo abo) {
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM `abo` WHERE `user_id` = ? AND `sdp_id` = ? AND `duree` = ?");
+            preparedStatement.setInt(1, abo.getUser().getId());
+            preparedStatement.setInt(2, abo.getSdp().getId());
+            preparedStatement.setString(3, abo.getDuree());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+
+        } catch (SQLException exception) {
+            System.out.println("Error (getAll) sdp : " + exception.getMessage());
+        }
+        return false;
+    }
+
     public boolean add(Abo abo) {
+        if (checkExist(abo)) {
+            return false;
+        }
+
         String request = "INSERT INTO `abo`(`created_at`, `user_id`, `sdp_id`, `duree`, `etat`) VALUES(?, ?, ?, ?, ?)";
         try {
             preparedStatement = connection.prepareStatement(request);
@@ -98,6 +117,10 @@ public class AboService {
     }
 
     public boolean edit(Abo abo) {
+        if (checkExist(abo)) {
+            return false;
+        }
+
         String request = "UPDATE `abo` SET `created_at` = ?, `user_id` = ?, `sdp_id` = ?, `duree` = ?, `etat` = ? WHERE `id`=" + abo.getId();
         try {
             preparedStatement = connection.prepareStatement(request);

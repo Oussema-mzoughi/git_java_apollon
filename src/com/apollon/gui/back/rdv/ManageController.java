@@ -117,13 +117,14 @@ public class ManageController implements Initializable {
             if (currentRdv == null) {
                 if (RdvService.getInstance().add(rdv)) {
                     AlertUtils.makeInformation("Rdv ajouté avec succés");
+                    MainWindowController.getInstance().loadInterface(Constants.FXML_DISPLAY_ALL_RDV);
                     Mailer.sendMail(
                             rdv.getPartenaire().getName(),
                             "",
                             "<h1>Notification</h1> <br/> <h2><b>Un nouveau rendez vous a été ajouté</b></h2>"
                     );
                 } else {
-                    AlertUtils.makeError("Could not add rdv");
+                    AlertUtils.makeError("Rendez vous existe deja");
                 }
             } else {
                 rdv.setCreatedAt(currentRdv.getCreatedAt());
@@ -131,11 +132,11 @@ public class ManageController implements Initializable {
                 if (RdvService.getInstance().edit(rdv)) {
                     AlertUtils.makeInformation("Rdv modifié avec succés");
                     ShowAllController.currentRdv = null;
+                    MainWindowController.getInstance().loadInterface(Constants.FXML_DISPLAY_ALL_RDV);
                 } else {
-                    AlertUtils.makeError("Could not edit rdv");
+                    AlertUtils.makeError("Rendez vous existe deja");
                 }
             }
-            MainWindowController.getInstance().loadInterface(Constants.FXML_DISPLAY_ALL_RDV);
         }
     }
 
@@ -168,6 +169,11 @@ public class ManageController implements Initializable {
 
         if (partenaireCB.getValue() == null) {
             AlertUtils.makeInformation("partenaire ne doit pas etre vide");
+            return false;
+        }
+
+        if (partenaireCB.getValue().getId() == userIdCB.getValue().getId()) {
+            AlertUtils.makeInformation("partenaire doit etre different a user");
             return false;
         }
 

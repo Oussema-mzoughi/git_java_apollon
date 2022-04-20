@@ -77,8 +77,9 @@ public class ManageController implements Initializable {
             if (currentAbo == null) {
                 if (AboService.getInstance().add(abo)) {
                     AlertUtils.makeInformation("Abo ajouté avec succés");
+                    MainWindowController.getInstance().loadInterface(Constants.FXML_DISPLAY_ALL_ABO);
                 } else {
-                    AlertUtils.makeError("Could not add abo");
+                    AlertUtils.makeError("Abonnement existe deja");
                 }
             } else {
                 abo.setCreatedAt(currentAbo.getCreatedAt());
@@ -86,11 +87,11 @@ public class ManageController implements Initializable {
                 if (AboService.getInstance().edit(abo)) {
                     AlertUtils.makeInformation("Abo modifié avec succés");
                     ShowAllController.currentAbo = null;
+                    MainWindowController.getInstance().loadInterface(Constants.FXML_DISPLAY_ALL_ABO);
                 } else {
-                    AlertUtils.makeError("Could not edit abo");
+                    AlertUtils.makeError("Abonnement existe deja");
                 }
             }
-            MainWindowController.getInstance().loadInterface(Constants.FXML_DISPLAY_ALL_ABO);
         }
     }
 

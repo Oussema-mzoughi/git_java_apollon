@@ -75,8 +75,15 @@ public class ShowAllController implements Initializable {
             parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_MODEL_RDV)));
 
             HBox innerContainer = ((HBox) ((AnchorPane) ((AnchorPane) parent).getChildren().get(0)).getChildren().get(0));
-            ((Text) innerContainer.lookup("#userIdText")).setText("UserId : " + rdv.getUser().getName());
-            ((Text) innerContainer.lookup("#partenaireText")).setText("Partenaire : " + rdv.getPartenaire());
+            System.out.println("ANOTHER");
+            System.out.println(rdv.getUser().getId());
+            System.out.println(rdv.getUser().getName());
+            System.out.println("NEXT");
+            System.out.println(rdv.getPartenaire().getId());
+            System.out.println(rdv.getUser().getName());
+
+            ((Text) innerContainer.lookup("#userIdText")).setText("User : " + rdv.getUser().getName());
+            ((Text) innerContainer.lookup("#partenaireText")).setText("Partenaire : " + rdv.getPartenaire().getName());
             ((Text) innerContainer.lookup("#debutText")).setText("Debut : " + rdv.getDebut());
             ((Text) innerContainer.lookup("#finText")).setText("Fin : " + rdv.getFin());
             ((Text) innerContainer.lookup("#createdAtText")).setText("CreatedAt : " + rdv.getCreatedAt());

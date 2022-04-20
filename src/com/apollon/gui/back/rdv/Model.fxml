@@ -19,7 +19,7 @@
                 <HBox.margin>
                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                 </HBox.margin>
-                <Text fx:id="userIdText" text="UserId" wrappingWidth="190">
+                <Text fx:id="userIdText" text="User" wrappingWidth="190">
                     <font>
                         <Font name="System Bold" size="15.0"/>
                     </font>
