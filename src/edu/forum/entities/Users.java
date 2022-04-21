@@ -7,7 +7,7 @@ package edu.forum.entities;
 
 /**
  *
- * @author Administrateur
+ * @author Fakher
  */
 public class Users {
    private int id ;

@@ -8,27 +8,36 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.forum.gui.QuestionGestionsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.forum.gui.QuestionGestionsController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="596.0" prefWidth="920.0" style="-fx-background-color: #DFF3FB;" styleClass="mainFxmlClass">
          <stylesheets>
             <URL value="@ajoutersalle.css" />
          </stylesheets>
          <children>
-            <Label layoutX="32.0" layoutY="71.0" text="Titre" />
+            <ImageView fitHeight="628.0" fitWidth="935.0" layoutX="-12.0" smooth="false">
+               <image>
+                  <Image url="@../../../images/slanted-gradient-red-shades-background.png" />
+               </image>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </ImageView>
+            <Label layoutX="32.0" layoutY="71.0" text="Titre" textFill="WHITE" />
             <TextField fx:id="inputtitre" layoutX="122.0" layoutY="57.0" prefHeight="39.0" prefWidth="191.0" />
             <TextField fx:id="inputmessage" layoutX="122.0" layoutY="102.0" prefHeight="102.0" prefWidth="191.0" />
-            <Label layoutX="19.0" layoutY="135.0" text="Message" />
-            <Label layoutX="13.0" layoutY="222.0" text="Solutions" />
+            <Label layoutX="19.0" layoutY="135.0" text="Message" textFill="WHITE" />
+            <Label layoutX="13.0" layoutY="222.0" text="Solutions" textFill="WHITE" />
             <TextField fx:id="inputSolution" layoutX="122.0" layoutY="218.0" prefHeight="102.0" prefWidth="191.0" />
-            <Label layoutX="8.0" layoutY="347.0" text="Utilisateur :" />
-            <Label layoutX="260.0" text="Gestion des Questions" textFill="#9c3832">
+            <Label layoutX="8.0" layoutY="347.0" text="Utilisateur :" textFill="WHITE" />
+            <Label layoutX="260.0" text="Vos Questions!" textFill="#9c3832">
                <font>
                   <Font name="Arial Unicode MS" size="31.0" />
                </font>
@@ -46,25 +55,30 @@
                      </columns>
                   </TableView>
                   <TextField fx:id="inputRech" layoutX="234.0" layoutY="-5.0" prefHeight="39.0" prefWidth="211.0" />
+                  <ImageView fitHeight="28.0" fitWidth="49.0" layoutX="168.0" smooth="false">
+                     <image>
+                        <Image url="@../../../images/icons8-chercher-48.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
-            <Button fx:id="supp" layoutX="623.0" layoutY="513.0" mnemonicParsing="false" onAction="#supp" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Supprimer" textFill="WHITE">
+            <Button fx:id="supp" layoutX="612.0" layoutY="515.0" mnemonicParsing="false" onAction="#supp" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Supprimer" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="supp1" layoutX="363.0" layoutY="513.0" mnemonicParsing="false" onAction="#Modif" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;" text="Modifier" textFill="WHITE">
+            <Button fx:id="supp1" layoutX="366.0" layoutY="515.0" mnemonicParsing="false" onAction="#Modif" prefHeight="39.0" prefWidth="112.0" style="-fx-background-color: #cc5500;" text="Modifier" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="Ajouter" layoutX="487.0" layoutY="511.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Ajouter" textFill="WHITE">
+            <Button fx:id="Ajouter" layoutX="487.0" layoutY="515.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Ajouter" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
             <Label fx:id="imgpathttt" layoutX="533.0" layoutY="515.0" text="Label" visible="false" />
-            <Button fx:id="affichsalle" layoutX="761.0" layoutY="513.0" mnemonicParsing="false" onAction="#affichsalle" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Afficher" textFill="WHITE">
+            <Button fx:id="affichsalle" layoutX="739.0" layoutY="515.0" mnemonicParsing="false" onAction="#affichsalle" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Afficher" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -78,17 +92,20 @@
             <ComboBox fx:id="inputuser" layoutX="128.0" layoutY="343.0" prefHeight="18.0" prefWidth="185.0" promptText="Utilisateurs" />
             <Label fx:id="nbvue" layoutX="166.0" layoutY="390.0" />
             <Label fx:id="datenow" layoutX="108.0" layoutY="458.0" visible="false" />
-            <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="128.0" layoutY="386.0">
-               <image>
-                  <Image url="@../../../images/eye.png" />
-               </image>
-            </ImageView>
             <Label fx:id="datee" layoutX="253.0" layoutY="390.0" />
-            <Hyperlink fx:id="Reponsess" layoutX="731.0" layoutY="37.0" onAction="#Reponsess" text="Gestion Des Reponses">
+            <Hyperlink fx:id="Reponsess" layoutX="731.0" layoutY="37.0" onAction="#Reponsess" text="Les Réponses" textAlignment="CENTER" textFill="#c9c9c9">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Hyperlink>
+            <ImageView fitHeight="146.0" fitWidth="346.0" layoutX="8.0" layoutY="440.0" smooth="false">
+               <image>
+                  <Image url="@../../../images/logobig.png" />
+               </image>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

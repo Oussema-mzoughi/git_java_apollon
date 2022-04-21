@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  *
- * @author Administrateur
+ * @author Fakher
  */
 public class QuestionService {
      Connection connexion;   

@@ -52,12 +52,16 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Administrateur
+ * @author Fakher
  */
 public class ReponsesGestionController implements Initializable {
  Connection connexion;   
     @FXML
     private Button Confirmermodif;
+    @FXML
+    private Button supp;
+    @FXML
+    private Button supp1;
     public ReponsesGestionController() {
         connexion = Connexion.getInstance().getCnx();
     }
@@ -79,10 +83,8 @@ public class ReponsesGestionController implements Initializable {
     private TableColumn<?, ?> nbrVues;
     @FXML
     private TextField inputRech;
-    @FXML
-    private Button supp;
-    @FXML
-    private Button supp1;
+ 
+    
     @FXML
     private Button Ajouter;
     @FXML
@@ -225,11 +227,15 @@ public class ReponsesGestionController implements Initializable {
   
     @FXML
     private void supp(ActionEvent event) throws SQLException {
-           if (event.getSource() == supp1) {
+           if (event.getSource() == supp) {
             Reponses e = new Reponses();
             e.setId(tableview.getSelectionModel().getSelectedItem().getId());  
           ReponsesService cs = new ReponsesService();
-            cs.supp2(e);
+              Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Voulez-vous Supprimer cette réponse?");
+            a.setHeaderText(null);
+            a.showAndWait();
+            cs.SupprimerReponses(e);
             resetTableData();  
         
         }   
@@ -265,7 +271,10 @@ public class ReponsesGestionController implements Initializable {
          
             
         
-              
+                  Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Voulez-vous ajouter cette réponse ");
+            a.setHeaderText(null);
+            a.showAndWait();
             productService.ajouterReponse(c);
              resetTableData();
       
@@ -295,7 +304,7 @@ public class ReponsesGestionController implements Initializable {
             inputmessage.setText(tableview.getSelectionModel().getSelectedItem().getMessage_r());
 
            
-                  DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+                  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
            String strDate = dateFormat.format(tableview.getSelectionModel().getSelectedItem().getDate_r());       
             datee.setText(strDate);
 
@@ -325,7 +334,8 @@ public class ReponsesGestionController implements Initializable {
             a.setContentText("Please fill all fields ");
             a.setHeaderText(null);
             a.showAndWait();
-        } else if ( inputmessage.getText().matches("[\\\\!\"#$%&()*+,./:;<=>?@\\[\\]^_{|}~]+")
+        } else if (
+                inputmessage.getText().matches("[\\\\!\"#$%&()*+,./:;<=>?@\\[\\]^_{|}~]+")
                ) {
             Alert a = new Alert(Alert.AlertType.WARNING);
             a.setContentText("Une erreur s’est produite. Veuillez réessayer. ");
@@ -344,7 +354,10 @@ public class ReponsesGestionController implements Initializable {
                   inputquestion.getValue(),
                         inputuser.getValue()  );
         
-               
+                   Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Confirmer ");
+            a.setHeaderText(null);
+            a.showAndWait();
             productService.modifierReponses(c);
              resetTableData();
         

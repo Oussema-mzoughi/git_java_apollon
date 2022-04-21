@@ -121,10 +121,11 @@ public class AfficherQuestionsController implements Initializable {
                          
                          
         
-            Reponses c = new Reponses(comm.getText(),
-                    sqlDate2,Integer.parseInt(labelid.getText()),
-                  
-                        0   );
+            Reponses c;
+        c = new Reponses(comm.getText(),
+                sqlDate2,Integer.parseInt(labelid.getText()),
+                
+                0   );
 
            
      

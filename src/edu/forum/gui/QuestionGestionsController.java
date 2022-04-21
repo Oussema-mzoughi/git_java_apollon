@@ -51,7 +51,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Administrateur
+ * @author Fakher
  */
 public class QuestionGestionsController implements Initializable {
  Connection connexion;   
@@ -157,7 +157,7 @@ public class QuestionGestionsController implements Initializable {
             );        
         
         
-   FilteredList<Questions> filteredData = new FilteredList<>(list, e -> true);
+   FilteredList <Questions> filteredData = new FilteredList<>(list, e -> true);
             inputRech.setOnKeyReleased(e -> {
                 inputRech.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
                     filteredData.setPredicate((Predicate<? super Questions>) Questionss -> {
@@ -172,7 +172,8 @@ public class QuestionGestionsController implements Initializable {
                         return false;
                     });
                 });
-                SortedList<Questions> sortedData = new SortedList<>(filteredData);
+                
+                SortedList <Questions> sortedData = new SortedList<>(filteredData);
                 sortedData.comparatorProperty().bind(tableview.comparatorProperty());
                 tableview.setItems(sortedData);
             });
@@ -236,7 +237,7 @@ public class QuestionGestionsController implements Initializable {
 
                         nbvue.setText(Integer.toString(tableview.getSelectionModel().getSelectedItem().getNbr_vu()));
            
-                  DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+                  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
            String strDate = dateFormat.format(tableview.getSelectionModel().getSelectedItem().getDate_post());       
             datee.setText(strDate);
 
@@ -249,7 +250,9 @@ public class QuestionGestionsController implements Initializable {
     private void Ajouter(ActionEvent event) throws SQLException {
          QuestionService productService = new QuestionService();
   
-        if (inputmessage.getText().equals("")
+        if (
+              
+                inputmessage.getText().equals("")
                 || inputtitre.getText().equals("") 
                 || inputSolution.getText().equals("")) {
             Alert a = new Alert(Alert.AlertType.WARNING);
@@ -264,6 +267,20 @@ public class QuestionGestionsController implements Initializable {
             a.setHeaderText(null);
             a.showAndWait();
         }
+        
+        else if (inputtitre.getText().length() <10 ){
+            
+           Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setContentText("Le titre doit etre superieur a 10");
+            a.setHeaderText(null);
+            a.showAndWait(); 
+        }
+        else {
+            
+     
+        
+        
+        
         Date date = new Date(System.currentTimeMillis());
          
                  java.sql.Date sqlDate2 = new java.sql.Date(date.getTime());
@@ -276,14 +293,17 @@ public class QuestionGestionsController implements Initializable {
                   inputmessage.getText(), inputSolution.getText(),inputuser.getValue(),
                         0   );
         
-               
+              Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Voulez-vous ajouter cette question? ");
+            a.setHeaderText(null);
+            a.showAndWait();
             productService.ajouterQuestions(c);
              resetTableData();
       
         
-     ;
+     
         
-        
+           }
         
     }
   private int id ;
@@ -350,7 +370,10 @@ public class QuestionGestionsController implements Initializable {
                   inputmessage.getText(), inputSolution.getText(),inputuser.getValue(),
                         Integer.parseInt(nbvue.getText())   );
         
-               
+                      Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Voulez-vous Modifier cette question? ");
+            a.setHeaderText(null);
+            a.showAndWait();
             productService.modifierQuestion(c);
              resetTableData();
       

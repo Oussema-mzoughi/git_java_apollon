@@ -7,11 +7,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.forum.gui.ReponsesGestionController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.forum.gui.ReponsesGestionController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="596.0" prefWidth="920.0" style="-fx-background-color: #DFF3FB;" styleClass="mainFxmlClass">
          <stylesheets>
@@ -40,11 +42,6 @@
                   <TextField fx:id="inputRech" layoutX="234.0" layoutY="-5.0" prefHeight="39.0" prefWidth="211.0" />
                </children>
             </Pane>
-            <Button fx:id="supp" layoutX="623.0" layoutY="513.0" mnemonicParsing="false" onAction="#supp" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Supprimer" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
             <Button fx:id="supp1" layoutX="363.0" layoutY="513.0" mnemonicParsing="false" onAction="#Modif" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;" text="Modifier" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -70,10 +67,15 @@
                   <URL value="@ajoutersalle.css" />
                </stylesheets>
                <children>
-                  <Label layoutX="32.0" layoutY="71.0" text="message" />
+                  <ImageView fitHeight="606.0" fitWidth="940.0" layoutX="-10.0" layoutY="-10.0" smooth="false">
+                     <image>
+                        <Image url="@../../../images/slanted-gradient-red-shades-background.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="32.0" layoutY="63.0" prefHeight="25.0" prefWidth="60.0" text="Message" textFill="WHITE" />
                   <TextField fx:id="inputmessage" layoutX="122.0" layoutY="57.0" prefHeight="39.0" prefWidth="191.0" />
-                  <Label layoutX="19.0" layoutY="135.0" text="question" />
-                  <Label layoutX="260.0" text="Gestion des Reponses" textFill="#9c3832">
+                  <Label layoutX="21.0" layoutY="147.0" prefHeight="17.0" prefWidth="60.0" text="Question" textFill="WHITE" />
+                  <Label layoutX="260.0" text="Les Réponses" textFill="#9c3832">
                      <font>
                         <Font name="Arial Unicode MS" size="31.0" />
                      </font>
@@ -89,19 +91,19 @@
                               <TableColumn fx:id="user_id" prefWidth="156.7999267578125" text="user_id" />
                           </columns>
                         </TableView>
+                        <ImageView fitHeight="28.0" fitWidth="49.0" layoutX="170.0" layoutY="1.0" smooth="false">
+                           <image>
+                              <Image url="@../../../images/icons8-chercher-48.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
-                  <Button fx:id="supp1" layoutX="623.0" layoutY="513.0" mnemonicParsing="false" onAction="#supp" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Supprimer" textFill="WHITE">
+                  <Button fx:id="supp1" layoutX="346.0" layoutY="515.0" mnemonicParsing="false" onAction="#Modif" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: #cc5500;" text="Modifier" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="supp1" layoutX="363.0" layoutY="513.0" mnemonicParsing="false" onAction="#Modif" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;" text="Modifier" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="Ajouter1" layoutX="487.0" layoutY="511.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Ajouter" textFill="WHITE">
+                  <Button fx:id="Ajouter1" layoutX="487.0" layoutY="515.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Ajouter" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -116,14 +118,25 @@
                   <Label fx:id="nbvue1" layoutX="166.0" layoutY="390.0" />
                   <Label fx:id="datenow1" layoutX="108.0" layoutY="458.0" visible="false" />
                   <Label fx:id="datee1" layoutX="253.0" layoutY="390.0" />
-                  <Label layoutX="13.0" layoutY="252.0" text="Utilisateur :" />
-                  <ComboBox fx:id="inputuser" layoutX="125.0" layoutY="248.0" prefHeight="18.0" prefWidth="185.0" promptText="Utilisateurs" />
-                  <ComboBox fx:id="inputquestion" layoutX="128.0" layoutY="140.0" prefHeight="18.0" prefWidth="185.0" promptText="question" />
+                  <Label layoutX="13.0" layoutY="252.0" text="Utilisateur :" textFill="WHITE" />
+                  <ComboBox fx:id="inputuser" layoutX="125.0" layoutY="248.0" prefHeight="31.0" prefWidth="185.0" promptText="Utilisateurs" />
+                  <ComboBox fx:id="inputquestion" layoutX="128.0" layoutY="140.0" prefHeight="31.0" prefWidth="185.0" promptText="Choisir la question " />
                   <Button fx:id="Confirmermodif" layoutX="246.0" layoutY="513.0" mnemonicParsing="false" onAction="#Confirmermodif" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;" text="Confirmer" textFill="WHITE" visible="false">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     
                   </Button>
+                  <Button fx:id="supp" layoutX="627.0" layoutY="515.0" mnemonicParsing="false" onAction="#supp" prefHeight="39.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Supprimer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="61.0" fitWidth="161.0" layoutX="768.0" layoutY="-6.0" smooth="false">
+                     <image>
+                        <Image url="@../../../images/907-9079371_forum-icon.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
