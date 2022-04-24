@@ -6,13 +6,12 @@
 package edu.forum.entities;
 
 /**
- *
  * @author Fakher
  */
 public class Users {
-   private int id ;
-   
-   private String nom ;
+    private int id;
+
+    private String nom;
 
     public Users(int id, String nom) {
         this.id = id;
@@ -41,6 +40,6 @@ public class Users {
     public void setNom(String nom) {
         this.nom = nom;
     }
-   
-   
+
+
 }

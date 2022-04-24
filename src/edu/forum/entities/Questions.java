@@ -6,16 +6,16 @@
 package edu.forum.entities;
 
 import java.util.Date;
+
 /**
- *
  * @author Fakher
  */
 public class Questions {
-    private int id ;
+    private int id;
     private String titre;
     private Date date_post;
     private String message;
-    private String solution ;
+    private String solution;
     private int user_id;
     private int nbr_vu;
 
@@ -97,10 +97,5 @@ public class Questions {
         this.nbr_vu = nbr_vu;
     }
 
-   
-    
-    
-    
-    
-    
+
 }

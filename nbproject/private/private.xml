@@ -3,17 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/forum/entities/Questions.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/forum/entities/Users.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/forum/entities/Reponses.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/forum/gui/ReponsesGestion.fxml</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/forum/gui/AfficherQuestions.fxml</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/esprit/services/QuestionService.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/forum/gui/QuestionGestions.fxml</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/esprit/services/ReponsesService.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/forum/gui/AfficherQuestionsController.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/forum/gui/QuestionGestionsController.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/git_java_apollon/src/edu/forum/gui/ReponsesGestionController.java</file>
+            <file>file:/C:/Users/Fakher/Desktop/Jamel/Fakher/src/edu/forum/tools/Connexion.java</file>
+            <file>file:/C:/Users/Fakher/Desktop/Jamel/Fakher/src/edu/forum/tools/Animations.java</file>
+            <file>file:/C:/Users/Fakher/Desktop/Jamel/Fakher/src/edu/forum/gui/AfficherQuestionsController.java</file>
+            <file>file:/C:/Users/Fakher/Desktop/Jamel/Fakher/src/edu/forum/gui/MainWindow.fxml</file>
+            <file>file:/C:/Users/Fakher/Desktop/Jamel/Fakher/src/edu/forum/tools/MainStyle.css</file>
         </group>
     </open-files>
 </project-private>

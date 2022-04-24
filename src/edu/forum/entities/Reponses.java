@@ -8,12 +8,11 @@ package edu.forum.entities;
 import java.util.Date;
 
 /**
- *
  * @author Fakher
  */
 public class Reponses {
     private int id;
-    private String message_r; 
+    private String message_r;
     private Date date_r;
     private int question_id;
     private int user_id;
@@ -34,6 +33,10 @@ public class Reponses {
         this.date_r = date_r;
         this.question_id = question_id;
         this.user_id = user_id;
+    }
+
+    public Reponses(String message_r) {
+        this.message_r = message_r;
     }
 
     public int getId() {
@@ -81,13 +84,5 @@ public class Reponses {
         return "Reponses{" + "id=" + id + ", message_r=" + message_r + ", date_r=" + date_r + ", question_id=" + question_id + ", user_id=" + user_id + '}';
     }
 
-    public Reponses(String message_r) {
-        this.message_r = message_r;
-    }
-    
-    
-    
-    
-    
-    
+
 }
