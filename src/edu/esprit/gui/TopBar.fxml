@@ -9,8 +9,8 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainComponent" minHeight="-Infinity" prefHeight="60.0"
             prefWidth="418.0"
             AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171"
-            fx:controller="edu.forum.gui.TopBarController">
-    <HBox layoutX="16.0" prefHeight="30.0" spacing="15.0" stylesheets="@../../forum/tools/MainStyle.css"
+            fx:controller="edu.esprit.gui.TopBarController">
+    <HBox layoutX="16.0" prefHeight="30.0" spacing="15.0" stylesheets="@../../esprit/tools/MainStyle.css"
           AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="15.0">
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Apollon" wrappingWidth="150">
             <font>
