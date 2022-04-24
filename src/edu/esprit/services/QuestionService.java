@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.forum.services;
+package edu.esprit.services;
 
-import edu.forum.entities.Questions;
-import edu.forum.entities.Reponses;
-import edu.forum.tools.Connexion;
+import edu.esprit.entities.Questions;
+import edu.esprit.entities.Reponses;
+import edu.esprit.tools.Connexion;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
