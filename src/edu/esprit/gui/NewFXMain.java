@@ -5,7 +5,11 @@
  */
 package edu.esprit.gui;
 
+import edu.esprit.entities.User;
+import edu.esprit.services.Userservice;
+import edu.esprit.tools.Connexion;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -28,11 +32,11 @@ public class NewFXMain extends Application {
     public void start(Stage primaryStage) {
         
         try {
-            Parent root =FXMLLoader.load(getClass().getResource("QuestionGestions.fxml"));
+            Parent root =FXMLLoader.load(getClass().getResource("login.fxml"));
             
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("Gestion Des Salle de Sports");
+            primaryStage.setTitle("Apollon Java Pidev GoldMiners 3A40");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
@@ -45,6 +49,14 @@ public class NewFXMain extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+       /* Connexion cx=Connexion.getInstance();
+          try {
+        User usr=new User("02020202","nomm","prenomm","oz.oussema@gmail.com","adressee","villee","7500","login","mdp","default.png","1");
+        Userservice us=new Userservice();
+        us.adduser(usr);
+      } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }*/
     }
     
 }

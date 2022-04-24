@@ -19,6 +19,11 @@ public class Connexion {
     public final String pwd = "";
     private Connection cnx;
     public static Connexion ct;
+    public static  int user_id;
+    public static  int user_role;
+    public static  String user_nom;
+    public static  String user_prenom;
+    public static  String user_inscription;
     
     
     private Connexion() {
@@ -40,5 +45,10 @@ public class Connexion {
     public Connection getCnx() {
         return cnx;
     }
+    
+    
+    
+    
+    
     
 }

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.HomeController">
+    <stylesheets>
+        <URL value="@home.css" />
+    </stylesheets>
+     <children>
+ 
+      <AnchorPane prefHeight="430.0" prefWidth="150.0" style="-fx-background-color: #61bdd4;">
+         <children>
+            <Accordion fx:id="menu_accordion" prefHeight="438.0" prefWidth="156.0">
+              <panes>
+                <TitledPane animated="false" prefHeight="200.0" prefWidth="151.0" styleClass="light-button" text="Gestion des utilisateurs">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="btn_menu_list_user" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="170.0" styleClass="light-button" text="Liste des utilisateurs">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin></Button>
+                               <Button fx:id="btn_menu_add_user" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="149.0" styleClass="light-button" text="Ajouter un utilisateur" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                <TitledPane animated="false" text="Gestion des articles">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                              <Button fx:id="btn_menu_list_article" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="170.0" text="Liste des articles">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin></Button>
+                               <Button fx:id="btn_menu_add_article" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="149.0" text="Ajouter un article" />
+                           </children>
+                        </VBox>
+                     </content></TitledPane>
+                  <TitledPane animated="false" text="Mon Profil">
+                    <content>
+                       <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                              <Button fx:id="btn_profil" mnemonicParsing="false" onAction="#btn_monprofil" prefHeight="25.0" prefWidth="170.0" text="Mon Profil">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin></Button>
+                               <Button fx:id="btn_deco" mnemonicParsing="false" onAction="#btn_deco" prefHeight="25.0" prefWidth="149.0" text="Déconnexion" />
+                           </children>
+                        </VBox>
+                    </content>
+                  </TitledPane>
+                
+              </panes>
+            </Accordion>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="150.0" prefHeight="430.0" prefWidth="550.0" style="-fx-background-color: #95f0b1;">
+         <children>
+           
+           
+           <Pane fx:id="pnl_list_article" layoutX="8.0" prefHeight="439.0" prefWidth="552.0" visible="false">
+               <children>
+                  <Button layoutX="218.0" layoutY="125.0" mnemonicParsing="false" text="list article" />
+               </children>
+            </Pane>
+            
+            
+            
+            <Pane fx:id="pnl_add_article" layoutX="8.0" prefHeight="439.0" prefWidth="552.0" visible="false">
+               <children>
+                  <Button layoutX="218.0" layoutY="125.0" mnemonicParsing="false" text="add article" />
+               </children>
+            </Pane>
+            
+            <Pane fx:id="pnl_add_user" layoutX="8.0" prefHeight="439.0" prefWidth="552.0" visible="false">
+               <children>
+      <Label layoutX="14.0" layoutY="30.0" text="Nom :" />
+      <TextField fx:id="add_nom" layoutX="122.0" layoutY="30.0" styleClass="form-control-white" />
+      
+      <Label layoutX="14.0" layoutY="65.0" text="Prenom :" />
+      <TextField fx:id="add_prenom" layoutX="122.0" layoutY="65.0" styleClass="form-control-white" />
+      
+      <Label layoutX="14.0" layoutY="95.0" text="email :" />
+      <TextField fx:id="add_email" layoutX="122.0" layoutY="95.0" styleClass="form-control-white" />
+      <Label fx:id="add_email_error" layoutX="300.0" layoutY="95.0" text="Format Email invalide" visible="false" />
+       <Label layoutX="14.0" layoutY="125.0" text="adresse :" />
+      <TextField fx:id="add_adresse" layoutX="122.0" layoutY="125.0" styleClass="form-control-white" />
+      
+       <Label layoutX="14.0" layoutY="155.0" text="ville :" />
+      <TextField fx:id="add_ville" layoutX="122.0" layoutY="155.0" styleClass="form-control-white" />
+     
+      
+       <Label layoutX="14.0" layoutY="185.0" text="Code Postal :" />
+      <TextField fx:id="add_cp" layoutX="122.0" layoutY="185.0" styleClass="form-control-white" />
+      
+      
+       <Label layoutX="14.0" layoutY="220.0" text="Téléphone :" />
+      <TextField fx:id="add_tel" layoutX="122.0" layoutY="220.0" styleClass="form-control-white" />
+     
+      
+       <Label layoutX="14.0" layoutY="245.0" text="Login :" />
+      <TextField fx:id="add_login" layoutX="122.0" layoutY="245.0" styleClass="form-control-white" />
+         <Label fx:id="add_login_error" layoutX="300.0" layoutY="245.0" text="Login déja utilisé!" visible="false" />
+      
+      
+      <Label layoutX="14.0" layoutY="275.0" text="Mot de passe :" />
+      <TextField fx:id="add_mdp" layoutX="122.0" layoutY="275.0" styleClass="form-control-white" />
+      
+      <Label layoutX="14.0" layoutY="315.0" text="Role :" />
+       <ComboBox fx:id="add_role" layoutX="122.0" layoutY="315.0" prefWidth="148.0" promptText="Role" styleClass="form-control-white" />
+     
+      <Label layoutX="14.0" layoutY="345.0" text="Image :" />
+       <Button fx:id="add_image" layoutX="122.0" layoutY="345.0" mnemonicParsing="false" onAction="#adduserimg" styleClass="light-button" text="Selectionner votre image" />
+       
+       <ImageView fx:id="adduserimg" fitHeight="76.0" fitWidth="112.0" layoutX="300.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="userimagepath" layoutX="533.0" layoutY="515.0" text="Label" visible="false" />
+  
+      
+         <Button fx:id="btn_adduser" layoutX="122.0" layoutY="405.0" mnemonicParsing="false" onAction="#adduser" prefWidth="148.0" styleClass="light-button" text="Ajouter Utilisateur" />
+      
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_list_user" layoutX="8.0" prefHeight="439.0" prefWidth="552.0" visible="false">
+               <children>
+                   <Label layoutX="20.0" layoutY="15.0" text="Recherche :" />
+                  <TextField fx:id="inputRech" layoutX="85.0" layoutY="10.0" prefWidth="211.0" styleClass="form-control-white" />
+            
+                       <TableView fx:id="tv_user" layoutY="51.0" prefHeight="334.0" prefWidth="547.0">
+              <columns>
+                
+                <TableColumn fx:id="tv_nom" prefWidth="100.0" text="Nom" />
+                <TableColumn fx:id="tv_prenom" prefWidth="100.0" text="Prenom" />
+                  <TableColumn fx:id="tv_email" prefWidth="100.0" text="Email" />
+                  <TableColumn fx:id="tv_role" prefWidth="100.0" text="Role" />
+                  <TableColumn fx:id="tv_etat" prefWidth="100.0" text="Etat" />
+                 
+              </columns>
+            </TableView>
+             <Button fx:id="Delete" layoutX="474.0" layoutY="400.0" mnemonicParsing="false" onAction="#Delete_user" text="Supprimer" />
+                <Button fx:id="Update" layoutX="400.0" layoutY="400.0" mnemonicParsing="false" onAction="#Update_user" text="Update" />
+               </children>
+            </Pane>
+                   <Pane fx:id="pnl_update_user" layoutX="8.0" prefHeight="439.0" prefWidth="552.0" visible="false">
+               <children>
+                    <Label fx:id="user_update_id" layoutX="533.0" layoutY="515.0" text="" visible="false" />
+      <Label layoutX="14.0" layoutY="35.0" text="Nom :" />
+      <TextField fx:id="update_nom" layoutX="122.0" layoutY="35.0" styleClass="form-control-white" />
+      
+      <Label layoutX="14.0" layoutY="65.0" text="Prenom :" />
+      <TextField fx:id="update_prenom" layoutX="122.0" layoutY="65.0" styleClass="form-control-white" />
+      
+      <Label layoutX="14.0" layoutY="95.0" text="email :" />
+      <TextField fx:id="update_email" layoutX="122.0" layoutY="95.0" styleClass="form-control-white" />
+      
+       <Label layoutX="14.0" layoutY="125.0" text="adresse :" />
+      <TextField fx:id="update_adresse" layoutX="122.0" layoutY="125.0" styleClass="form-control-white" />
+      
+       <Label layoutX="14.0" layoutY="155.0" text="ville :" />
+      <TextField fx:id="update_ville" layoutX="122.0" layoutY="155.0" styleClass="form-control-white" />
+     
+      
+       <Label layoutX="14.0" layoutY="185.0" text="Code Postal :" />
+      <TextField fx:id="update_cp" layoutX="122.0" layoutY="185.0" styleClass="form-control-white" />
+      
+      
+       <Label layoutX="14.0" layoutY="215.0" text="Téléphone :" />
+      <TextField fx:id="update_tel" layoutX="122.0" layoutY="215.0" styleClass="form-control-white" />
+     
+      
+       <Label layoutX="14.0" layoutY="245.0" text="Login :" />
+      <TextField fx:id="update_login" layoutX="122.0" layoutY="245.0" styleClass="form-control-white" />
+      
+      
+      <Label layoutX="14.0" layoutY="305.0" text="Role :" />
+       <ComboBox fx:id="update_role" layoutX="122.0" layoutY="305.0" prefWidth="148.0" promptText="Role" styleClass="form-control-white" />
+     
+      <Label layoutX="14.0" layoutY="345.0" text="Image :" />
+       <Button fx:id="update_image" layoutX="122.0" layoutY="345.0" mnemonicParsing="false" onAction="#adduserimg" styleClass="light-button" text="Selectionner votre image" />
+       
+       <ImageView fx:id="updateuserimg" fitHeight="76.0" fitWidth="112.0" layoutX="300.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="update_userimagepath" layoutX="533.0" layoutY="515.0" text="Label" visible="false" />
+  
+      
+         <Button fx:id="btn_updateuser" layoutX="122.0" layoutY="405.0" mnemonicParsing="false" onAction="#btn_update_user" prefWidth="148.0" styleClass="light-button" text="Maj Utilisateur" />
+      
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

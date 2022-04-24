@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.Add_userController">
+    <stylesheets>
+        <URL value="@add_user.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane prefHeight="430.0" prefWidth="150.0">
+         <children>
+            <Accordion prefHeight="438.0" prefWidth="156.0">
+              <panes>
+                <TitledPane animated="false" prefHeight="200.0" prefWidth="151.0" text="Gestion des utilisateurs">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="btn_list_user" mnemonicParsing="false" onAction="#afficherUser" prefHeight="25.0" prefWidth="170.0" text="Liste des utilisateurs">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin></Button>
+                               <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Ajouter un utilisateur" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                <TitledPane animated="false" text="Gestion des articles">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Liste des articles">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin></Button>
+                               <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Ajouter un article" />
+                           </children>
+                        </VBox>
+                     </content></TitledPane>
+              </panes>
+            </Accordion>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="150.0" prefHeight="430.0" prefWidth="550.0">
+         <children>
+            <Pane layoutX="7.0" layoutY="-1.0" prefHeight="430.0" prefWidth="543.0" />
+            <Pane layoutX="8.0" prefHeight="439.0" prefWidth="552.0">
+               <children>
+                  <Button layoutX="218.0" layoutY="125.0" mnemonicParsing="false" text="hello 2" />
+               </children>
+            </Pane>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
