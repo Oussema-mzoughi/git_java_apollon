@@ -5,9 +5,9 @@
 package edu.esprit.gui;
 
 import edu.esprit.entities.Evenement;
-import edu.esprit.entities.Questions;
+
 import edu.esprit.services.EvenementServices;
-import edu.esprit.services.QuestionService;
+
 import edu.esprit.tools.Connexion;
 import java.io.File;
 import java.io.IOException;

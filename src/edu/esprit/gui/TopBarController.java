@@ -65,6 +65,6 @@ public class TopBarController implements Initializable {
 
     @FXML
     public void logout(ActionEvent actionEvent) {
-        NewFXMain.getInstance().logout();
+       // NewFXMain.getInstance().logout();
     }
 }
