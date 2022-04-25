@@ -5,6 +5,7 @@
  */
 package edu.esprit.gui;
 
+import com.apollon.utils.Constants;
 import edu.esprit.entities.User;
 import edu.esprit.services.Userservice;
 import edu.esprit.tools.Connexion;
@@ -32,7 +33,7 @@ public class NewFXMain extends Application {
     public void start(Stage primaryStage) {
        
         try {
-            Parent root =FXMLLoader.load(getClass().getResource("QuestionGestions.fxml"));
+            Parent root =FXMLLoader.load(getClass().getResource(Constants.FXML_MAIN_WINDOW));
             
             Scene scene = new Scene(root);
             
