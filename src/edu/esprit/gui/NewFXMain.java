@@ -30,9 +30,9 @@ public class NewFXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        
+       
         try {
-            Parent root =FXMLLoader.load(getClass().getResource("AjoutCommande.fxml"));
+            Parent root =FXMLLoader.load(getClass().getResource("QuestionGestions.fxml"));
             
             Scene scene = new Scene(root);
             
