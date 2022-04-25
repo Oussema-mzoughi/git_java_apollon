@@ -6,18 +6,12 @@
 package edu.esprit.entities;
 
 /**
- *
  * @author hp
  */
 public class Salle {
 
-    public static Object getItems() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-private int id,users_id	;
-private String 	nom_salle ,adresse_salle ,ville_salle ,email ,num_tel,nomgerant,nomdirecteur,image;
-
+    private int id, users_id;
+    private String nom_salle, adresse_salle, ville_salle, email, num_tel, nomgerant, nomdirecteur, image;
     public Salle() {
     }
 
@@ -44,6 +38,10 @@ private String 	nom_salle ,adresse_salle ,ville_salle ,email ,num_tel,nomgerant,
         this.nomgerant = nomgerant;
         this.nomdirecteur = nomdirecteur;
         this.image = image;
+    }
+
+    public static Object getItems() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {
@@ -131,6 +129,5 @@ private String 	nom_salle ,adresse_salle ,ville_salle ,email ,num_tel,nomgerant,
         return "Salle{" + "id=" + id + ", users_id=" + users_id + ", nom_salle=" + nom_salle + ", adresse_salle=" + adresse_salle + ", ville_salle=" + ville_salle + ", email=" + email + ", num_tel=" + num_tel + ", nomgerant=" + nomgerant + ", nomdirecteur=" + nomdirecteur + ", image=" + image + '}';
     }
 
-   
 
 }

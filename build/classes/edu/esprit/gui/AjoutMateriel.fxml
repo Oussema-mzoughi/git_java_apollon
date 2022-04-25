@@ -11,67 +11,62 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.AjoutMaterielController">
-   <children>
-      <AnchorPane id="AnchorPane" prefHeight="596.0" prefWidth="920.0" style="-fx-background-color: #DFF3FB;" styleClass="mainFxmlClass">
-         <stylesheets>
-            <URL value="@ajoutersalle.css" />
-         </stylesheets>
-         <children>
-            <Label layoutX="29.0" layoutY="74.0" text="Type" />
-            <TextField fx:id="type" layoutX="121.0" layoutY="70.0" />
-            <Label layoutX="28.0" layoutY="131.0" text="Nom" />
-            <TextField fx:id="nom" layoutX="122.0" layoutY="127.0" />
-            <TextField fx:id="Tdirecteur" layoutX="122.0" layoutY="177.0" />
-            <Label layoutX="29.0" layoutY="226.0" text="Salle" />
-            <Label layoutX="281.0" layoutY="14.0" text="Ajouter Materiel" textFill="#9c3832">
-               <font>
-                  <Font name="Arial Unicode MS" size="31.0" />
-               </font>
-            </Label>
-            <Pane layoutX="321.0" layoutY="80.0" prefHeight="387.0" prefWidth="574.0">
-               <children>
-                  <TextField fx:id="inputRech" layoutX="168.0" layoutY="-5.0" prefHeight="39.0" prefWidth="211.0" />
-                  <TableView fx:id="tableview" layoutX="24.0" layoutY="54.0" prefHeight="292.0" prefWidth="521.0">
-                    <columns>
-                      <TableColumn fx:id="typetable" prefWidth="133.60003662109375" text="type" />
-                      <TableColumn fx:id="Nomtable" prefWidth="137.5999755859375" text="Nom" />
-                        <TableColumn fx:id="Codetable" prefWidth="121.5999755859375" text="Code" />
-                        <TableColumn fx:id="Salletable" prefWidth="128.800048828125" text="Salle" />
-                    </columns>
-                  </TableView>
-               </children>
-            </Pane>
-            <Button fx:id="supp" layoutX="623.0" layoutY="513.0" mnemonicParsing="false" onAction="#supp" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Supprimer" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="supp1" layoutX="363.0" layoutY="513.0" mnemonicParsing="false" onAction="#Modif" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;" text="Modifier" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="Ajouter" layoutX="487.0" layoutY="511.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Ajouter" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Label fx:id="imgpathttt" layoutX="533.0" layoutY="515.0" text="Label" visible="false" />
-            <Button fx:id="affichsalle" layoutX="761.0" layoutY="513.0" mnemonicParsing="false" onAction="#affichsalle" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Afficher" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Label fx:id="labelid" layoutX="761.0" layoutY="37.0" text="Label" visible="false" />
-            <Button fx:id="Confirmer" layoutX="221.0" layoutY="511.0" mnemonicParsing="false" onAction="#ConfirmerModif" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Confirmer" textFill="WHITE" visible="false">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <ComboBox fx:id="Salle" layoutX="117.0" layoutY="222.0" prefHeight="26.0" prefWidth="158.0" promptText="Salle" />
-            <Label fx:id="code" layoutX="28.0" layoutY="181.0" text="Code" />
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../tools/MainStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.AjoutMaterielController">
+    <children>
+        <AnchorPane id="AnchorPane" prefHeight="596.0" prefWidth="920.0" style="-fx-background-color: #FFFFFF;" styleClass="mainFxmlClass">
+            <stylesheets>
+                <URL value="@ajoutersalle.css" />
+            </stylesheets>
+            <children>
+                <Label layoutX="29.0" layoutY="74.0" text="Type" />
+                <TextField fx:id="type" layoutX="121.0" layoutY="70.0" styleClass="form-control" />
+                <Label layoutX="28.0" layoutY="131.0" text="Nom" />
+                <TextField fx:id="nom" layoutX="122.0" layoutY="127.0" styleClass="form-control" />
+                <TextField fx:id="Tdirecteur" layoutX="122.0" layoutY="177.0" styleClass="form-control" />
+                <Label layoutX="29.0" layoutY="226.0" text="Salle" />
+                <Label layoutX="281.0" layoutY="14.0" text="Ajouter Materiel" textFill="#9c3832">
+                    <font>
+                        <Font name="Arial Unicode MS" size="31.0" />
+                    </font>
+                </Label>
+                <Pane layoutX="321.0" layoutY="80.0" prefHeight="387.0" prefWidth="574.0">
+                    <children>
+                        <TextField fx:id="inputRech" layoutX="168.0" layoutY="-5.0" prefHeight="39.0" prefWidth="211.0" promptText="Recherche..." styleClass="form-control" />
+                        <TableView fx:id="tableview" layoutX="24.0" layoutY="54.0" prefHeight="292.0" prefWidth="521.0">
+                            <columns>
+                                <TableColumn fx:id="typetable" prefWidth="133.60003662109375" text="type" />
+                                <TableColumn fx:id="Nomtable" prefWidth="137.5999755859375" text="Nom" />
+                                <TableColumn fx:id="Codetable" prefWidth="121.5999755859375" text="Code" />
+                                <TableColumn fx:id="Salletable" prefWidth="128.800048828125" text="Salle" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </Pane>
+                <Button fx:id="supp" layoutX="586.0" layoutY="467.0" mnemonicParsing="false" onAction="#supp" prefHeight="40.0" prefWidth="119.0" styleClass="success-button" text="Supprimer" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Button fx:id="supp1" layoutX="449.0" layoutY="467.0" mnemonicParsing="false" onAction="#Modif" prefHeight="26.0" prefWidth="101.0" styleClass="success-button" text="Modifier" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Button fx:id="Ajouter" layoutX="130.0" layoutY="308.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="119.0" styleClass="success-button" text="Ajouter" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Label fx:id="imgpathttt" layoutX="533.0" layoutY="515.0" text="Label" visible="false" />
+                <Label fx:id="labelid" layoutX="761.0" layoutY="37.0" text="Label" visible="false" />
+                <Button fx:id="Confirmer" layoutX="221.0" layoutY="511.0" mnemonicParsing="false" onAction="#ConfirmerModif" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Confirmer" textFill="WHITE" visible="false">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <ComboBox fx:id="Salle" layoutX="117.0" layoutY="222.0" prefHeight="26.0" prefWidth="158.0" promptText="Salle" styleClass="form-control" />
+                <Label fx:id="code" layoutX="28.0" layoutY="181.0" text="Code" />
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

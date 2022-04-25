@@ -7,83 +7,68 @@ package edu.esprit.services;
 
 import edu.esprit.entities.Salle;
 import edu.esprit.tools.Connexion;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
  * @author hp
  */
 public class SalleService {
-    
-   Connection connexion;   
-  public SalleService() {
+
+    Connection connexion;
+
+    public SalleService() {
         connexion = Connexion.getInstance().getCnx();
     }
- 
+
 
     public void modifierSalle(Salle e) throws SQLException, NoSuchAlgorithmException {
-       
+
 //          String req = "UPDATE evenement SET "
 //                + " NomEvent='"+e.getNomEvent()+"'"
 //                + ", DescriptionEvent='"+e.getDescriptionEvent()+"'"
 //                + ", DateEvent  ='"+(java.sql.Date) (Date) e.getDateEvent()+"'"
 //                + ", Prixevent='"+e.getPrixevent()+"' where IdEvent  = "+e.getIdEvent()+"";
-        
-        
+
+
         String req = "UPDATE salle_de_sport SET "
-                + " users_id='"+e.getUsers_id()+"'"
-                + ", nom_salle='"+e.getNom_salle()+"'"
-                + ", adresse_salle='"+e.getAdresse_salle()+"'"
-              + ", ville_salle='"+e.getVille_salle()+"'"
-                + ", email='"+e.getEmail()+"'"
-                + ", num_tel='"+e.getNum_tel()+"'"
-                + ", nomgerant='"+e.getNomgerant()+"'"
-                + ", nomdirecteur='"+e.getNomdirecteur()+"'"
-                + ", image='"+e.getImage()+"' where id  = "+e.getId()+"";
+                + " users_id='" + e.getUsers_id() + "'"
+                + ", nom_salle='" + e.getNom_salle() + "'"
+                + ", adresse_salle='" + e.getAdresse_salle() + "'"
+                + ", ville_salle='" + e.getVille_salle() + "'"
+                + ", email='" + e.getEmail() + "'"
+                + ", num_tel='" + e.getNum_tel() + "'"
+                + ", nomgerant='" + e.getNomgerant() + "'"
+                + ", nomdirecteur='" + e.getNomdirecteur() + "'"
+                + ", image='" + e.getImage() + "' where id  = " + e.getId() + "";
         Statement stm = connexion.createStatement();
         stm.executeUpdate(req);
-    } 
-          public void ajouterSalle(Salle e) throws SQLException {
+    }
+
+    public void ajouterSalle(Salle e) throws SQLException {
         String req = "INSERT INTO `salle_de_sport` (`users_id`,`nom_salle`,`adresse_salle`,`ville_salle`,`email`,`num_tel`,`nomgerant`,`nomdirecteur`,`image`) "
                 + "VALUES (?,?,?,?,?,?,?,?,?) ";
         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setInt(1, e.getUsers_id());
         ps.setString(2, e.getNom_salle());
-       
+
         ps.setString(3, e.getAdresse_salle());
-           ps.setString(4, e.getVille_salle());
-            ps.setString(5, e.getEmail());
-             ps.setString(6, e.getNum_tel());
-             
-              ps.setString(7, e.getNomgerant());
-               ps.setString(8, e.getNomdirecteur());
-                ps.setString(9, e.getImage());
+        ps.setString(4, e.getVille_salle());
+        ps.setString(5, e.getEmail());
+        ps.setString(6, e.getNum_tel());
+
+        ps.setString(7, e.getNomgerant());
+        ps.setString(8, e.getNomdirecteur());
+        ps.setString(9, e.getImage());
 
         ps.executeUpdate();
     }
-      
-     
-        
-        
- 
 
-     
 
-  
- 
-     public List<Salle> AfficherAllSalle() throws SQLException {
+    public List<Salle> AfficherAllSalle() throws SQLException {
 
         List<Salle> Salles = new ArrayList<>();
         String req = "select * from salle_de_sport ";
@@ -104,10 +89,9 @@ public class SalleService {
         }
         return Salles;
     }
-     
-   
-  
-     public void SupprimerSalle(Salle e) throws SQLException {
+
+
+    public void SupprimerSalle(Salle e) throws SQLException {
 
         String req = "DELETE FROM salle_de_sport WHERE id =?";
         try {
@@ -117,43 +101,18 @@ public class SalleService {
         } catch (SQLException ex) {
         }
     }
-     
-     
-    
-   public void supp2(Salle m) throws SQLException {
 
-        String req = "DELETE FROM salle_de_sport WHERE id ="+m.getId()+"";
-     
-         PreparedStatement ps = connexion.prepareStatement(req);
+
+    public void supp2(Salle m) throws SQLException {
+
+        String req = "DELETE FROM salle_de_sport WHERE id =" + m.getId() + "";
+
+        PreparedStatement ps = connexion.prepareStatement(req);
         ps.executeUpdate();
-     
+
     }
 
-   
-   
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 //    Connection cnx;
 //
 //    public SalleService() {
@@ -298,21 +257,6 @@ public class SalleService {
     }
 
 */
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
 }

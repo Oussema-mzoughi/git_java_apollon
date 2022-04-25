@@ -10,35 +10,34 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
  * @author hp
  */
 public class Connexion {
-    public final String url  ="jdbc:mysql://localhost:3306/apollon";
-    public final String user ="root";
+    public static Connexion ct;
+    public final String url = "jdbc:mysql://localhost:3306/apollon";
+    public final String user = "root";
     public final String pwd = "";
     private Connection cnx;
-    public static Connexion ct;
-    
-    
+
+
     private Connexion() {
         try {
-            cnx=DriverManager.getConnection(url, user, pwd);
+            cnx = DriverManager.getConnection(url, user, pwd);
             System.out.println("Connexion etablie !!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
     }
 
-    public static Connexion getInstance(){
-        if(ct==null)
-            ct=new Connexion();
+    public static Connexion getInstance() {
+        if (ct == null)
+            ct = new Connexion();
         return ct;
     }
 
     public Connection getCnx() {
         return cnx;
     }
-    
+
 }

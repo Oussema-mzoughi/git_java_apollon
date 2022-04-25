@@ -6,15 +6,14 @@
 package edu.esprit.entities;
 
 /**
- *
  * @author hp
  */
 public class Materiel {
-    	private int id; 
-        private int salle_id_id;
-        private String type;
-        private String nom;
-        private String code;	
+    private int id;
+    private int salle_id_id;
+    private String type;
+    private String nom;
+    private String code;
 
     public Materiel() {
     }
@@ -74,7 +73,5 @@ public class Materiel {
         this.code = code;
     }
 
-   
 
-    
 }
