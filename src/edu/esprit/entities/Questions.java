@@ -8,7 +8,7 @@ package edu.esprit.entities;
 import java.util.Date;
 
 /**
- * @author Fakher
+ * @author Fakherr
  */
 public class Questions {
     private int id;
