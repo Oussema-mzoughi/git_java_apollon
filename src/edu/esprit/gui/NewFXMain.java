@@ -28,11 +28,13 @@ public class NewFXMain extends Application {
     public void start(Stage primaryStage) {
         
         try {
-            Parent root =FXMLLoader.load(getClass().getResource("QuestionGestions.fxml"));
+           // Parent root =FXMLLoader.load(getClass().getResource("QuestionGestions.fxml"));
+            Parent root =FXMLLoader.load(getClass().getResource("AfficherEvenement.fxml"));
+           // Parent root =FXMLLoader.load(getClass().getResource("AfficherTousEvenements.fxml"));
             
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("Gestion Des Salle de Sports");
+            primaryStage.setTitle("Gestion Des Evenements");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Fakher/Desktop/PiJava/Pidevjava/src/edu/esprit/entities/Questions.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/PiJava/Pidevjava/src/edu/esprit/gui/AfficherQuestionsController.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/PiJava/Pidevjava/src/edu/esprit/services/QuestionService.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/PiJava/Pidevjava/src/edu/esprit/services/ReponsesService.java</file>
+            <file>file:/C:/Users/user/Downloads/git_java_apollon%20(1)/git_java_apollon/src/edu/esprit/gui/AfficherDetailsEventController.java</file>
+            <file>file:/C:/Users/user/Downloads/git_java_apollon%20(1)/git_java_apollon/src/edu/esprit/gui/AfficherEvenement.fxml</file>
+            <file>file:/C:/Users/user/Downloads/git_java_apollon%20(1)/git_java_apollon/src/edu/esprit/services/EvenementServices.java</file>
+            <file>file:/C:/Users/user/Downloads/git_java_apollon%20(1)/git_java_apollon/src/edu/esprit/gui/AffichageEventsController.java</file>
+            <file>file:/C:/Users/user/Downloads/git_java_apollon%20(1)/git_java_apollon/src/edu/esprit/tools/Connexion.java</file>
+            <file>file:/C:/Users/user/Downloads/git_java_apollon%20(1)/git_java_apollon/src/edu/esprit/gui/AfficherEvenementController.java</file>
+            <file>file:/C:/Users/user/Downloads/git_java_apollon%20(1)/git_java_apollon/src/edu/esprit/gui/NewFXMain.java</file>
         </group>
     </open-files>
 </project-private>
