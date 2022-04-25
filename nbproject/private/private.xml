@@ -7,6 +7,17 @@
             <file>file:/C:/Users/Oussema/Desktop/git_java_apollon/src/edu/esprit/tools/Connexion.java</file>
             <file>file:/C:/Users/Oussema/Desktop/git_java_apollon/src/edu/esprit/gui/login.css</file>
             <file>file:/C:/Users/Oussema/Desktop/git_java_apollon/src/edu/esprit/gui/login.fxml</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/entities/Produit.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjouterSalle.fxml</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/NewFXMain.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjoutProduitController.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/services/ProduitService.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/ajoutersalle.css</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/services/SalleService.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjoutProduit.fxml</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/services/MaterielService.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjouterSalleController.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjoutMaterielController.java</file>
         </group>
     </open-files>
 </project-private>

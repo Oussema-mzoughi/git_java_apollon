@@ -10,12 +10,12 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import edu.esprit.entities.Produit;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import edu.esprit.entities.Salle;
 import edu.esprit.entities.Users;
-import edu.esprit.services.SalleService;
+import edu.esprit.services.ProduitService;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -69,52 +69,39 @@ import java.sql.Connection;
  *
  * @author hp
  */
-public class AjouterSalleController implements Initializable {
+public class AjouterProduitController implements Initializable {
    Connection connexion;   
     @FXML
-    private Button AjouterMat;
+    private Button AjouterCom;
     @FXML
     private Button pdf2;
-  public AjouterSalleController() {
+  public AjouterProduitController() {
         connexion = Connexion.getInstance().getCnx();
     }
     @FXML
     private TextField Tnom;
     @FXML
-    private TextField Tadresse;
+    private TextField Tprix;
     @FXML
-    private TextField Tville;
+    private TextField Tdescription;
     @FXML
-    private TextField Temail;
-    @FXML
-    private TextField Tnum;
-    @FXML
-    private TextField Tgerant;
-    @FXML
-    private TextField Tdirecteur;
-    @FXML
-    private ComboBox<Integer> Tuser;
+    private TextField Tstock;
     @FXML
     private Button Timage;
     @FXML
     private TableColumn<?, ?> nomcl;
     @FXML
-    private TableColumn<?, ?> adressecl;
+    private TableColumn<?, ?> prixcl;
     @FXML
-    private TableColumn<?, ?> emailcl;
+    private TableColumn<?, ?> descriptioncl;
     @FXML
-    private TableColumn<?, ?> telcl;
+    private TableColumn<?, ?> stockcl;
     @FXML
-    private TableColumn<?, ?> gerantcl;
-    @FXML
-    private TableColumn<?, ?> directeurcl;
-    @FXML
-    private TableView<Salle> tableview;
-  public static Salle connectedSalle;
-SalleService cs = new SalleService();
-  public ObservableList<Salle> list;
-    @FXML
-    private TableColumn<?, ?> villesalle;
+    private TableView<Produit> tableview;
+  public static Produit connectedProduit;
+ProduitService cs = new ProduitService();
+  public ObservableList<Produit> list;
+    
     @FXML
     private TextField inputRech;
     @FXML
@@ -128,7 +115,7 @@ SalleService cs = new SalleService();
     @FXML
     private Label imgpathttt;
     @FXML
-    private Button affichsalle;
+    private Button affichproduit;
     @FXML
     private Label labelid;
     @FXML
@@ -139,65 +126,47 @@ SalleService cs = new SalleService();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
  
-         try {
-            String req = "select * from users";
-            Statement stm = connexion.createStatement();
-            ResultSet rst = stm.executeQuery(req);
-            
-            while (rst.next()) {
-             //   Users a = new Users(rst.getInt("id"));
-                
-                Integer xx = rst.getInt("id");
-                Tuser.getItems().add(xx);
-            }
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+           
         
         
-        
-        SalleService pss = new SalleService();
-        ArrayList<Salle> c = new ArrayList<>();
+        ProduitService pss = new ProduitService();
+        ArrayList<Produit> p = new ArrayList<>();
         try {
-            c = (ArrayList<Salle>) pss.AfficherAllSalle();
+            p = (ArrayList<Produit>) pss.AfficherAllProduit();
         } catch (SQLException ex) {
         }
         
-        ObservableList<Salle> obs2 = FXCollections.observableArrayList(c);
+        ObservableList<Produit> obs2 = FXCollections.observableArrayList(p);
         tableview.setItems(obs2);
         
         
-        nomcl.setCellValueFactory(new PropertyValueFactory<>("nom_salle"));
-        adressecl.setCellValueFactory(new PropertyValueFactory<>("adresse_salle"));
-        emailcl.setCellValueFactory(new PropertyValueFactory<>("email"));
-             telcl.setCellValueFactory(new PropertyValueFactory<>("num_tel"));
-         gerantcl.setCellValueFactory(new PropertyValueFactory<>("nomgerant"));
-          directeurcl.setCellValueFactory(new PropertyValueFactory<>("nomdirecteur"));
-           villesalle.setCellValueFactory(new PropertyValueFactory<>("ville_salle"));
-    
+ nomcl.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prixcl.setCellValueFactory(new PropertyValueFactory<>("prix"));
+        descriptioncl.setCellValueFactory(new PropertyValueFactory<>("description"));
+        stockcl.setCellValueFactory(new PropertyValueFactory<>("stock"));
+            
             try {
             list = FXCollections.observableArrayList(
-                    pss.AfficherAllSalle()
+                    pss.AfficherAllProduit()
             );        
         
         
-   FilteredList<Salle> filteredData = new FilteredList<>(list, e -> true);
+   FilteredList<Produit> filteredData = new FilteredList<>(list, e -> true);
             inputRech.setOnKeyReleased(e -> {
                 inputRech.textProperty().addListener((ObservableValue, oldValue, newValue) -> {
-                    filteredData.setPredicate((Predicate<? super Salle>) Salles -> {
+                    filteredData.setPredicate((Predicate<? super Produit>) Produits -> {
                         if (newValue == null || newValue.isEmpty()) {
                             return true;
                         }
                         String lower = newValue.toLowerCase();
-                        if (Salles.getNom_salle().toLowerCase().contains(lower)) {
+                        if (Produits.getNom().toLowerCase().contains(lower)) {
                             return true;
                         }
 
                         return false;
                     });
                 });
-                SortedList<Salle> sortedData = new SortedList<>(filteredData);
+                SortedList<Produit> sortedData = new SortedList<>(filteredData);
                 sortedData.comparatorProperty().bind(tableview.comparatorProperty());
                 tableview.setItems(sortedData);
             });
@@ -207,21 +176,23 @@ SalleService cs = new SalleService();
                 }    
   public void resetTableData() throws SQLDataException, SQLException {
 
-        List<Salle> listevents = new ArrayList<>();
-        listevents = cs.AfficherAllSalle();
-        ObservableList<Salle> data = FXCollections.observableArrayList(listevents);
+        List<Produit> listevents = new ArrayList<>();
+        listevents = cs.AfficherAllProduit();
+        ObservableList<Produit> data = FXCollections.observableArrayList(listevents);
         tableview.setItems(data);
     }    
     @FXML
     private void supp(ActionEvent event) throws SQLException {
           if (event.getSource() == supp) {
-            Salle e = new Salle();
-            e.setId(tableview.getSelectionModel().getSelectedItem().getId());  
-            SalleService cs = new SalleService();
-            cs.supp2(e);
+            Produit p = new Produit();
+            p.setId(tableview.getSelectionModel().getSelectedItem().getId());  
+            ProduitService cs = new ProduitService();
+            cs.supp2(p);
             resetTableData();  
         
-        }}
+        }
+    
+    }
 
     
 
@@ -233,18 +204,17 @@ SalleService cs = new SalleService();
 
     @FXML
     private void Ajouter(ActionEvent event) {
-        SalleService productService = new SalleService();
+        ProduitService productService = new ProduitService();
   
         if (Tnom.getText().equals("")
-                || Tadresse.getText().equals("") || Tville.getText().equals("")
-                || Temail.getText().equals("")|| Tgerant.getText().equals("")|| Tdirecteur.getText().equals("")) {
+                || Tprix.getText().equals("")|| Tstock.getText().equals("")|| Tdescription.getText().equals("")) {
             Alert a = new Alert(Alert.AlertType.WARNING);
             a.setContentText("Please fill all fields ");
             a.setHeaderText(null);
             a.showAndWait();
         } else if (Tnom.getText().equals("")
-                || Tadresse.getText().equals("") || Tnom.getText().matches("[\\\\!\"#$%&()*+,./:;<=>?@\\[\\]^_{|}~]+")
-                || Temail.getText().equals("")) {
+                || Tprix.getText().equals("") || Tnom.getText().matches("[\\\\!\"#$%&()*+,./:;<=>?@\\[\\]^_{|}~]+")
+                || Tstock.getText().equals("")) {
             Alert a = new Alert(Alert.AlertType.WARNING);
             a.setContentText("Une erreur s’est produite. Veuillez réessayer. ");
             a.setHeaderText(null);
@@ -253,15 +223,18 @@ SalleService cs = new SalleService();
        
             
 
-            Salle c = new Salle(Tuser.getValue(),
-                    Tnom.getText(),
-                  Tadresse.getText(), Tville.getText(), Temail.getText(),
-                  Tnum.getText(), Tgerant.getText()   , Tdirecteur.getText(), Timage.getText()                  );
+            Produit p;
+       p = new Produit(  Tnom.getText(),
+                Float.valueOf(Tprix.getText()),
+                Tdescription.getText(),
+                Timage.getText(),
+                Integer.parseInt(Tstock.getText()));
+                  //Tnum.getText(), //Tgerant.getText()   , Timage.getText()                  );
         try {
-            productService.ajouterSalle(c);
+            productService.ajouterProduit(p);
              resetTableData();
         } catch (SQLException ex) {
-            Logger.getLogger(AjouterSalleController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AjouterProduitController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     
@@ -307,34 +280,24 @@ SalleService cs = new SalleService();
    
       @FXML
     private void Modif(ActionEvent event) throws IOException {
-            SalleService ps = new SalleService();
+            ProduitService ps = new ProduitService();
           
    
-        Salle c = new Salle(tableview.getSelectionModel().getSelectedItem().getId(),
-                tableview.getSelectionModel().getSelectedItem().getUsers_id(),
-               tableview.getSelectionModel().getSelectedItem().getNom_salle(),
-                 tableview.getSelectionModel().getSelectedItem().getAdresse_salle(),
-                tableview.getSelectionModel().getSelectedItem().getVille_salle(),
-                tableview.getSelectionModel().getSelectedItem().getEmail(),
-                         tableview.getSelectionModel().getSelectedItem().getNum_tel(),
-                                  tableview.getSelectionModel().getSelectedItem().getNomgerant(),
-                                                  tableview.getSelectionModel().getSelectedItem().getNomdirecteur(),
-                                  tableview.getSelectionModel().getSelectedItem().getImage()
+        Produit p = new Produit(tableview.getSelectionModel().getSelectedItem().getId(),
+               tableview.getSelectionModel().getSelectedItem().getNom(),
+                 tableview.getSelectionModel().getSelectedItem().getPrix(),
+                tableview.getSelectionModel().getSelectedItem().getDescription(),
+                tableview.getSelectionModel().getSelectedItem().getImage(),
+                tableview.getSelectionModel().getSelectedItem().getStock()
                 );
-           Tuser.setValue(tableview.getSelectionModel().getSelectedItem().getUsers_id());
            
-            labelid.setText(Integer.toString(tableview.getSelectionModel().getSelectedItem().getUsers_id()));
          
-            Tnom.setText(tableview.getSelectionModel().getSelectedItem().getNom_salle());
-            
-            Tadresse.setText(tableview.getSelectionModel().getSelectedItem().getAdresse_salle());
-            Tville.setText(tableview.getSelectionModel().getSelectedItem().getVille_salle());
-
-                        Temail.setText(tableview.getSelectionModel().getSelectedItem().getEmail());
-            Tnum.setText(tableview.getSelectionModel().getSelectedItem().getNum_tel());
-            Tgerant.setText(tableview.getSelectionModel().getSelectedItem().getNomgerant());
-            Tdirecteur.setText(tableview.getSelectionModel().getSelectedItem().getNomgerant());
+            Tnom.setText(tableview.getSelectionModel().getSelectedItem().getNom());
+            Tprix.setText(String.valueOf(tableview.getSelectionModel().getSelectedItem().getPrix()));
+            Tdescription.setText(tableview.getSelectionModel().getSelectedItem().getDescription());
             Timage.setText(tableview.getSelectionModel().getSelectedItem().getImage());
+            Tstock.setText(String.valueOf(tableview.getSelectionModel().getSelectedItem().getStock()));
+
 
          
            Confirmer.setVisible(true);
@@ -344,23 +307,19 @@ SalleService cs = new SalleService();
     }
 
     @FXML
-    private void affichsalle(ActionEvent event) throws IOException {
-            SalleService ps = new SalleService();
+    private void affichProduit(ActionEvent event) throws IOException {
+            ProduitService ps = new ProduitService();
           
    
-        Salle c = new Salle(tableview.getSelectionModel().getSelectedItem().getId(),
-                tableview.getSelectionModel().getSelectedItem().getUsers_id(),
-               tableview.getSelectionModel().getSelectedItem().getNom_salle(),
-                 tableview.getSelectionModel().getSelectedItem().getAdresse_salle(),
-                tableview.getSelectionModel().getSelectedItem().getVille_salle(),
-                tableview.getSelectionModel().getSelectedItem().getEmail(),
-                         tableview.getSelectionModel().getSelectedItem().getNum_tel(),
-                                  tableview.getSelectionModel().getSelectedItem().getNomgerant(),
-                                                  tableview.getSelectionModel().getSelectedItem().getNomdirecteur(),
-                                  tableview.getSelectionModel().getSelectedItem().getImage()
+        Produit c = new Produit(tableview.getSelectionModel().getSelectedItem().getId(),
+               tableview.getSelectionModel().getSelectedItem().getNom(),
+                 tableview.getSelectionModel().getSelectedItem().getPrix(),
+                tableview.getSelectionModel().getSelectedItem().getDescription(),
+                tableview.getSelectionModel().getSelectedItem().getImage(),
+                tableview.getSelectionModel().getSelectedItem().getStock()
                 );
-        AjouterSalleController.connectedSalle = c;
-                           Parent page1 = FXMLLoader.load(getClass().getResource("AfficherSalledetail.fxml"));
+        AjouterProduitController.connectedProduit = c;
+                           Parent page1 = FXMLLoader.load(getClass().getResource("AfficherProduitdetail.fxml"));
         Scene scene = new Scene(page1);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -373,14 +332,16 @@ SalleService cs = new SalleService();
 
     @FXML
     private void ConfirmerModif(ActionEvent event) throws NoSuchAlgorithmException {
-                SalleService productService = new SalleService();
-System.out.println(labelid.getText());
-        Salle c = new Salle(Integer.parseInt(labelid.getText()),Tuser.getValue(),
+                ProduitService productService = new ProduitService();
+
+        Produit c = new Produit(Integer.parseInt(labelid.getText()),
                     Tnom.getText(),
-                  Tadresse.getText(), Tville.getText(), Temail.getText(),
-                  Tnum.getText(), Tgerant.getText()   , Tdirecteur.getText(), Timage.getText()                  );
+                Float.valueOf(Tprix.getText()),
+                Tdescription.getText(),
+                Timage.getText(),
+                Integer.parseInt(Tstock.getText()));
         try {
-            productService.modifierSalle(c);
+            productService.modifierProduit(c);
             resetTableData();
         } catch (SQLException ex) {
             Logger.getLogger(AjouterSalleController.class.getName()).log(Level.SEVERE, null, ex);
@@ -389,12 +350,12 @@ System.out.println(labelid.getText());
     }
 
     @FXML
-    private void AjouterMat(ActionEvent event) throws IOException {
+    private void AjouterCom(ActionEvent event) throws IOException {
         
-            Parent page1 = FXMLLoader.load(getClass().getResource("AjoutMateriel.fxml"));
+        Parent page1 = FXMLLoader.load(getClass().getResource("AjoutCommande.fxml"));
         Scene scene = new Scene(page1);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Gestion des Salles de Sports");
+        stage.setTitle("Gestion des Produit");
         stage.setScene(scene);
         stage.show(); 
         
@@ -414,7 +375,7 @@ System.out.println(labelid.getText());
      
         
         tableview.getItems().forEach((t) -> {
-            pTable.addCell(String.valueOf(t.getNom_salle()));
+            pTable.addCell(String.valueOf(t.getNom()));
   
             
             try {
