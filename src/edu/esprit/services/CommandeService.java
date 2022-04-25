@@ -9,7 +9,6 @@ import edu.esprit.entities.Commande;
 import edu.esprit.tools.Connexion;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,9 +21,8 @@ import java.util.List;
  * @author amine
  */
 public class CommandeService {
- 
     
-     Connection connexion;   
+      Connection connexion;   
   public CommandeService() {
         connexion = Connexion.getInstance().getCnx();
     }
@@ -40,11 +38,10 @@ public class CommandeService {
         
         
         String req = "UPDATE commande SET "
-                + ", numero='"+c.getNumero()+"'"
-                + ", date_commande='"+c.getDate_commande()+"'"
-                + ", date_livraison='"+c.getDate_livraison()+"'"
-                + ", livreur='"+c.getLivreur()+"'"
-                + ", totale='"+c.getTotale()+"' where id  = "+c.getId()+"";
+                + " numero ='"+c.getNumero()+"'"
+                + ", livreur ='"+c.getLivreur()+"'"
+                + ", totale ='"+c.getTotale()+"' "
+                + " where id  = "+c.getId()+"";
         Statement stm = connexion.createStatement();
         stm.executeUpdate(req);
     } 
@@ -52,24 +49,16 @@ public class CommandeService {
     
     
     
-          public void ajouterCommande(Commande c) throws SQLException {
-        String req = "INSERT INTO `commande`(`numero`, `date_commande`, `date_livraison`, `livreur`, `totale`) VALUES (?,?,?,?,?)";
+        public void ajouterCommande(Commande c) throws SQLException {
+        String req = "INSERT INTO `commande`(`numero`, `livreur`, `totale`) VALUES (?,?,?)";
         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setInt(1, c.getNumero());
-        ps.setDate(2, (Date) c.getDate_commande());
-        ps.setDate(3, (Date) c.getDate_livraison());
-        ps.setString(4, c.getLivreur());
-        ps.setInt(5, c.getTotale());
-
+        ps.setString(2, c.getLivreur());
+        ps.setInt(3, c.getTotale());
         ps.executeUpdate();
     }
       
-     
-        
-        
- 
 
-     
 
   
  
@@ -82,8 +71,6 @@ public class CommandeService {
         while (rst.next()) {
             Commande c = new Commande(rst.getInt("id")
                     , rst.getInt("numero")
-                    , rst.getDate("date_commande")
-                    , rst.getDate("date_livraison")
                     , rst.getString("livreur")
                     , rst.getInt("totale"));
             Commandes.add(c);
@@ -114,7 +101,5 @@ public class CommandeService {
         ps.executeUpdate();
      
     }
-    
-    
     
 }

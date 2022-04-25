@@ -5,7 +5,6 @@
  */
 package edu.esprit.entities;
 
-import java.util.Date;
 
 /**
  *
@@ -13,26 +12,21 @@ import java.util.Date;
  */
 public class Commande {
     
-     private int id;
+    private int id;
     private int numero;
-    private Date date_commande;
-    private Date date_livraison;
     private String livreur;
     private int totale;
     
-    public Commande(int id, int numero, Date date_commande, Date date_livraison, String livreur, int totale) {
+    public Commande(int id, int numero, String livreur, int totale) {
         this.id = id;
         this.numero = numero;
-        this.date_commande = date_commande;
-        this.date_livraison = date_livraison;
         this.livreur = livreur;
         this.totale = totale;
     }
 
-    public Commande(int numero, Date date_commande, Date date_livraison, String livreur, int totale) {
+    public Commande(int numero, String livreur, int totale) {
         this.numero = numero;
-        this.date_commande = date_commande;
-        this.date_livraison = date_livraison;
+       
         this.livreur = livreur;
         this.totale = totale;
     }
@@ -56,21 +50,6 @@ public class Commande {
         this.numero = numero;
     }
     
-    public Date getDate_commande() {
-        return date_commande;
-    }
-
-    public void setDate_commande(Date date_commande) {
-        this.date_commande = date_commande;
-    }
-    
-    public Date getDate_livraison() {
-        return date_livraison;
-    }
-
-    public void setDate_livraison(Date date_livraison) {
-        this.date_livraison = date_livraison;
-    }
     
     public String getLivreur() {
         return livreur;
@@ -87,5 +66,4 @@ public class Commande {
     public void setTotale(int totale) {
         this.totale = totale;
     }
-    
 }

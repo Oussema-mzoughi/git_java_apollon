@@ -168,10 +168,10 @@ SalleService cs = new SalleService();
         tableview.setItems(obs2);
         
         
- nomcl.setCellValueFactory(new PropertyValueFactory<>("nom_salle"));
+        nomcl.setCellValueFactory(new PropertyValueFactory<>("nom_salle"));
         adressecl.setCellValueFactory(new PropertyValueFactory<>("adresse_salle"));
         emailcl.setCellValueFactory(new PropertyValueFactory<>("email"));
-        telcl.setCellValueFactory(new PropertyValueFactory<>("num_tel"));
+             telcl.setCellValueFactory(new PropertyValueFactory<>("num_tel"));
          gerantcl.setCellValueFactory(new PropertyValueFactory<>("nomgerant"));
           directeurcl.setCellValueFactory(new PropertyValueFactory<>("nomdirecteur"));
            villesalle.setCellValueFactory(new PropertyValueFactory<>("ville_salle"));
@@ -221,9 +221,7 @@ SalleService cs = new SalleService();
             cs.supp2(e);
             resetTableData();  
         
-        }
-    
-    }
+        }}
 
     
 
@@ -376,7 +374,7 @@ SalleService cs = new SalleService();
     @FXML
     private void ConfirmerModif(ActionEvent event) throws NoSuchAlgorithmException {
                 SalleService productService = new SalleService();
-
+System.out.println(labelid.getText());
         Salle c = new Salle(Integer.parseInt(labelid.getText()),Tuser.getValue(),
                     Tnom.getText(),
                   Tadresse.getText(), Tville.getText(), Temail.getText(),

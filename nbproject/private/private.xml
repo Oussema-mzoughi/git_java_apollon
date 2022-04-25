@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Fakher/Desktop/PiJava/Pidevjava/src/edu/esprit/entities/Questions.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/PiJava/Pidevjava/src/edu/esprit/gui/AfficherQuestionsController.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/PiJava/Pidevjava/src/edu/esprit/services/QuestionService.java</file>
-            <file>file:/C:/Users/Fakher/Desktop/PiJava/Pidevjava/src/edu/esprit/services/ReponsesService.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/entities/Produit.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjouterSalle.fxml</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/NewFXMain.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjoutProduitController.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/services/ProduitService.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/ajoutersalle.css</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/services/SalleService.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjoutProduit.fxml</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/services/MaterielService.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjouterSalleController.java</file>
+            <file>file:/C:/Users/amine/Documents/NetBeansProjects/Pidevjava/src/edu/esprit/gui/AjoutMaterielController.java</file>
         </group>
     </open-files>
 </project-private>

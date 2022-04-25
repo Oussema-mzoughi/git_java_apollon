@@ -10,8 +10,8 @@ package edu.esprit.entities;
  * @author amine
  */
 public class Produit {
- 
-       private int id;
+    
+    private int id;
     private String nom;
     private float prix;
     private String description;
@@ -36,7 +36,6 @@ public class Produit {
     }
 
     public Produit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 
@@ -95,4 +94,5 @@ public class Produit {
         this.stock = stock;
     }
 
+    
 }

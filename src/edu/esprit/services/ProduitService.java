@@ -38,11 +38,12 @@ public class ProduitService {
         
         
         String req = "UPDATE produit SET "
-                + ", nom='"+p.getNom()+"'"
-                + ", prix='"+p.getPrix()+"'"
-                + ", description='"+p.getDescription()+"'"
-                + ", stock='"+p.getStock()+"'"
-                + ", image='"+p.getImage()+"' where id  = "+p.getId()+"";
+                + " nom ='"+p.getNom()+"'"
+                + ", prix ='"+p.getPrix()+"'"
+                + ", description ='"+p.getDescription()+"'"
+                + ", image ='"+p.getImage()+"'"
+                + ", stock ='"+p.getStock()+"'"
+                + " where id  = "+p.getId()+"";
         Statement stm = connexion.createStatement();
         stm.executeUpdate(req);
     } 
@@ -51,13 +52,13 @@ public class ProduitService {
     
     
           public void ajouterProduit(Produit p) throws SQLException {
-        String req = "INSERT INTO `produit`(`nom_produit`, `prix_produit`, `description`, `image_path`, `stock`) VALUES (?,?,?,?,?)";
-        PreparedStatement ps = connexion.prepareStatement(req);
+        String req = "INSERT INTO `produit` (`nom`, `prix`, `description`, `image`, `stock`)" + "VALUES (?,?,?,?,?)";
+         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setString(1, p.getNom());
         ps.setFloat(2, p.getPrix());
         ps.setString(3, p.getDescription());
-        ps.setInt(4, p.getStock());
-        ps.setString(5, p.getImage());
+        ps.setString(4, p.getImage());
+        ps.setInt(5, p.getStock());
 
         ps.executeUpdate();
     }
