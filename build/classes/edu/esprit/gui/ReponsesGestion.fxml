@@ -1,132 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.ReponsesGestionController">
-   <children>
-      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="596.0" prefWidth="920.0" style="-fx-background-color: #DFF3FB;" styleClass="mainFxmlClass">
-         <stylesheets>
-            <URL value="@ajoutersalle.css" />
-         </stylesheets>
-         <children>
-            <TextField fx:id="inputmessage" layoutX="122.0" layoutY="102.0" prefHeight="102.0" prefWidth="191.0" />
-            <Label layoutX="19.0" layoutY="135.0" text="Message" />
-            <Label layoutX="260.0" text="Gestion des Questions" textFill="#9c3832">
-               <font>
-                  <Font name="Arial Unicode MS" size="31.0" />
-               </font>
-            </Label>
-            <Pane layoutX="321.0" layoutY="80.0" prefHeight="387.0" prefWidth="574.0">
-               <children>
-                  <TableView fx:id="tableview" layoutX="40.0" layoutY="39.0" prefHeight="334.0" prefWidth="547.0">
-                     <columns>
-                        <TableColumn fx:id="Titre" prefWidth="75.0" text="Titre" />
-                        <TableColumn fx:id="Message" prefWidth="175.199951171875" text="Message" />
-                        <TableColumn fx:id="Solution" prefWidth="108.800048828125" text="Solution" />
-                        <TableColumn fx:id="Date" prefWidth="56.800048828125" text="Date" />
-                        <TableColumn fx:id="User" prefWidth="70.4000244140625" text="User" />
-                        <TableColumn fx:id="nbrVues" prefWidth="70.4000244140625" text="nbrVues" />
-                     </columns>
-                  </TableView>
-                  <TextField fx:id="inputRech" layoutX="234.0" layoutY="-5.0" prefHeight="39.0" prefWidth="211.0" />
-               </children>
-            </Pane>
-            <Button fx:id="supp" layoutX="623.0" layoutY="513.0" mnemonicParsing="false" onAction="#supp" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Supprimer" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="supp1" layoutX="363.0" layoutY="513.0" mnemonicParsing="false" onAction="#Modif" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;" text="Modifier" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="Ajouter" layoutX="487.0" layoutY="511.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Ajouter" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Label fx:id="imgpathttt" layoutX="533.0" layoutY="515.0" text="Label" visible="false" />
-            <Button fx:id="affichsalle" layoutX="761.0" layoutY="513.0" mnemonicParsing="false" onAction="#affichsalle" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Afficher" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Label fx:id="labelid" layoutX="761.0" layoutY="37.0" text="Label" visible="false" />
-            <Label fx:id="nbvue" layoutX="166.0" layoutY="390.0" />
-            <Label fx:id="datenow" layoutX="108.0" layoutY="458.0" visible="false" />
-            <Label fx:id="datee" layoutX="253.0" layoutY="390.0" />
-            <AnchorPane id="AnchorPane" prefHeight="606.0" prefWidth="930.0" style="-fx-background-color: #DFF3FB;" styleClass="mainFxmlClass">
-               <stylesheets>
-                  <URL value="@ajoutersalle.css" />
-               </stylesheets>
-               <children>
-                  <Label layoutX="32.0" layoutY="71.0" text="message" />
-                  <TextField fx:id="inputmessage" layoutX="122.0" layoutY="57.0" prefHeight="39.0" prefWidth="191.0" />
-                  <Label layoutX="19.0" layoutY="135.0" text="question" />
-                  <Label layoutX="260.0" text="Gestion des Reponses" textFill="#9c3832">
-                     <font>
-                        <Font name="Arial Unicode MS" size="31.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="321.0" layoutY="80.0" prefHeight="387.0" prefWidth="574.0">
-                     <children>
-                        <TextField fx:id="inputRech" layoutX="234.0" layoutY="-5.0" prefHeight="39.0" prefWidth="211.0" />
-                        <TableView fx:id="tableview" layoutX="19.0" layoutY="46.0" prefHeight="341.0" prefWidth="536.0">
-                          <columns>
-                            <TableColumn fx:id="message_r" prefWidth="112.0" text="message_r" />
-                            <TableColumn fx:id="date_r" prefWidth="148.0" text="date_r" />
-                              <TableColumn fx:id="question_id" prefWidth="116.0" text="question_id" />
-                              <TableColumn fx:id="user_id" prefWidth="156.7999267578125" text="user_id" />
-                          </columns>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/18" fx:controller="edu.esprit.gui.ReponsesGestionController">
+    <children>
+        <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="596.0" prefWidth="920.0"
+                    style="-fx-background-color: #DFF3FB;" styleClass="mainFxmlClass">
+            <stylesheets>
+                <URL value="@ajoutersalle.css"/>
+            </stylesheets>
+            <children>
+                <TextField fx:id="inputmessage" layoutX="122.0" layoutY="102.0" prefHeight="102.0" prefWidth="191.0"/>
+                <Label layoutX="19.0" layoutY="135.0" text="Message"/>
+                <Label layoutX="260.0" text="Gestion des Questions" textFill="#9c3832">
+                    <font>
+                        <Font name="Arial Unicode MS" size="31.0"/>
+                    </font>
+                </Label>
+                <Pane layoutX="321.0" layoutY="80.0" prefHeight="387.0" prefWidth="574.0">
+                    <children>
+                        <TableView fx:id="tableview" layoutX="40.0" layoutY="39.0" prefHeight="334.0" prefWidth="547.0">
+                            <columns>
+                                <TableColumn fx:id="Titre" prefWidth="75.0" text="Titre"/>
+                                <TableColumn fx:id="Message" prefWidth="175.199951171875" text="Message"/>
+                                <TableColumn fx:id="Solution" prefWidth="108.800048828125" text="Solution"/>
+                                <TableColumn fx:id="Date" prefWidth="56.800048828125" text="Date"/>
+                                <TableColumn fx:id="User" prefWidth="70.4000244140625" text="User"/>
+                                <TableColumn fx:id="nbrVues" prefWidth="70.4000244140625" text="nbrVues"/>
+                            </columns>
                         </TableView>
-                     </children>
-                  </Pane>
-                  <Button fx:id="supp1" layoutX="623.0" layoutY="513.0" mnemonicParsing="false" onAction="#supp" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Supprimer" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="supp1" layoutX="363.0" layoutY="513.0" mnemonicParsing="false" onAction="#Modif" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;" text="Modifier" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="Ajouter1" layoutX="487.0" layoutY="511.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Ajouter" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="imgpathttt1" layoutX="533.0" layoutY="515.0" text="Label" visible="false" />
-                  <Label fx:id="labelid1" layoutX="761.0" layoutY="37.0" text="Label" visible="false" />
-                  <Button fx:id="Confirmer1" layoutX="221.0" layoutY="511.0" mnemonicParsing="false" onAction="#ConfirmerModif" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Confirmer" textFill="WHITE" visible="false">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="nbvue1" layoutX="166.0" layoutY="390.0" />
-                  <Label fx:id="datenow1" layoutX="108.0" layoutY="458.0" visible="false" />
-                  <Label fx:id="datee1" layoutX="253.0" layoutY="390.0" />
-                  <Label layoutX="13.0" layoutY="252.0" text="Utilisateur :" />
-                  <ComboBox fx:id="inputuser" layoutX="125.0" layoutY="248.0" prefHeight="18.0" prefWidth="185.0" promptText="Utilisateurs" />
-                  <ComboBox fx:id="inputquestion" layoutX="128.0" layoutY="140.0" prefHeight="18.0" prefWidth="185.0" promptText="question" />
-                  <Button fx:id="Confirmermodif" layoutX="246.0" layoutY="513.0" mnemonicParsing="false" onAction="#Confirmermodif" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;" text="Confirmer" textFill="WHITE" visible="false">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-   </children>
+                        <TextField fx:id="inputRech" layoutX="234.0" layoutY="-5.0" prefHeight="39.0"
+                                   prefWidth="211.0"/>
+                    </children>
+                </Pane>
+                <Button fx:id="supp" layoutX="623.0" layoutY="513.0" mnemonicParsing="false" onAction="#supp"
+                        prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Supprimer"
+                        textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="supp1" layoutX="363.0" layoutY="513.0" mnemonicParsing="false" onAction="#Modif"
+                        prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;" text="Modifier"
+                        textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="Ajouter" layoutX="487.0" layoutY="511.0" mnemonicParsing="false" onAction="#Ajouter"
+                        prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Ajouter"
+                        textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Button>
+                <Label fx:id="imgpathttt" layoutX="533.0" layoutY="515.0" text="Label" visible="false"/>
+                <Button fx:id="affichsalle" layoutX="761.0" layoutY="513.0" mnemonicParsing="false"
+                        onAction="#affichsalle" prefHeight="40.0" prefWidth="119.0"
+                        style="-fx-background-color: #ff4500;" text="Afficher" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Button>
+                <Label fx:id="labelid" layoutX="761.0" layoutY="37.0" text="Label" visible="false"/>
+                <Label fx:id="nbvue" layoutX="166.0" layoutY="390.0"/>
+                <Label fx:id="datenow" layoutX="108.0" layoutY="458.0" visible="false"/>
+                <Label fx:id="datee" layoutX="253.0" layoutY="390.0"/>
+                <AnchorPane id="AnchorPane" prefHeight="606.0" prefWidth="930.0" style="-fx-background-color: #DFF3FB;"
+                            styleClass="mainFxmlClass">
+                    <stylesheets>
+                        <URL value="@ajoutersalle.css"/>
+                    </stylesheets>
+                    <children>
+                        <Label layoutX="32.0" layoutY="71.0" text="message"/>
+                        <TextField fx:id="inputmessage" layoutX="122.0" layoutY="57.0" prefHeight="39.0"
+                                   prefWidth="191.0"/>
+                        <Label layoutX="19.0" layoutY="135.0" text="question"/>
+                        <Label layoutX="260.0" text="Gestion des Reponses" textFill="#9c3832">
+                            <font>
+                                <Font name="Arial Unicode MS" size="31.0"/>
+                            </font>
+                        </Label>
+                        <Pane layoutX="321.0" layoutY="80.0" prefHeight="387.0" prefWidth="574.0">
+                            <children>
+                                <TextField fx:id="inputRech" layoutX="234.0" layoutY="-5.0" prefHeight="39.0"
+                                           prefWidth="211.0"/>
+                                <TableView fx:id="tableview" layoutX="19.0" layoutY="46.0" prefHeight="341.0"
+                                           prefWidth="536.0">
+                                    <columns>
+                                        <TableColumn fx:id="message_r" prefWidth="112.0" text="message_r"/>
+                                        <TableColumn fx:id="date_r" prefWidth="148.0" text="date_r"/>
+                                        <TableColumn fx:id="question_id" prefWidth="116.0" text="question_id"/>
+                                        <TableColumn fx:id="user_id" prefWidth="156.7999267578125" text="user_id"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </Pane>
+                        <Button fx:id="supp1" layoutX="623.0" layoutY="513.0" mnemonicParsing="false" onAction="#supp"
+                                prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;"
+                                text="Supprimer" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="supp1" layoutX="363.0" layoutY="513.0" mnemonicParsing="false" onAction="#Modif"
+                                prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #cc5500;"
+                                text="Modifier" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="Ajouter1" layoutX="487.0" layoutY="511.0" mnemonicParsing="false"
+                                onAction="#Ajouter" prefHeight="43.0" prefWidth="119.0"
+                                style="-fx-background-color: ff8c00;" text="Ajouter" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                        <Label fx:id="imgpathttt1" layoutX="533.0" layoutY="515.0" text="Label" visible="false"/>
+                        <Label fx:id="labelid1" layoutX="761.0" layoutY="37.0" text="Label" visible="false"/>
+                        <Button fx:id="Confirmer1" layoutX="221.0" layoutY="511.0" mnemonicParsing="false"
+                                onAction="#ConfirmerModif" prefHeight="43.0" prefWidth="119.0"
+                                style="-fx-background-color: ff8c00;" text="Confirmer" textFill="WHITE" visible="false">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                        <Label fx:id="nbvue1" layoutX="166.0" layoutY="390.0"/>
+                        <Label fx:id="datenow1" layoutX="108.0" layoutY="458.0" visible="false"/>
+                        <Label fx:id="datee1" layoutX="253.0" layoutY="390.0"/>
+                        <Label layoutX="13.0" layoutY="252.0" text="Utilisateur :"/>
+                        <ComboBox fx:id="inputuser" layoutX="125.0" layoutY="248.0" prefHeight="18.0" prefWidth="185.0"
+                                  promptText="Utilisateurs"/>
+                        <ComboBox fx:id="inputquestion" layoutX="128.0" layoutY="140.0" prefHeight="18.0"
+                                  prefWidth="185.0" promptText="question"/>
+                        <Button fx:id="Confirmermodif" layoutX="246.0" layoutY="513.0" mnemonicParsing="false"
+                                onAction="#Confirmermodif" prefHeight="26.0" prefWidth="101.0"
+                                style="-fx-background-color: #cc5500;" text="Confirmer" textFill="WHITE"
+                                visible="false">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>
