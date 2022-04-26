@@ -12,7 +12,6 @@ import edu.esprit.tools.Connexion;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
