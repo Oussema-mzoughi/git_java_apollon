@@ -64,11 +64,6 @@
                </font>
             </Button>
             <Label fx:id="imgpathttt" layoutX="533.0" layoutY="515.0" text="Label" visible="false" />
-            <Button fx:id="imagee" layoutX="9.0" layoutY="450.0" mnemonicParsing="false" onAction="#importimage" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #ff4500;" text="Import image" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
             <Label fx:id="labelid" layoutX="761.0" layoutY="37.0" text="Label" visible="false" />
             <Button fx:id="Confirmer" layoutX="221.0" layoutY="511.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="119.0" style="-fx-background-color: ff8c00;" text="Confirmer" textFill="WHITE" visible="false">
                <font>

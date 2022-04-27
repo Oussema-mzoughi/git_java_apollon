@@ -12,10 +12,12 @@ import java.util.Date;
  * @author user
  */
 public class Evenement {
+
     private int id;
     private int nbr_max;
-    private String titre, description,adresse,categorie,image;
-    private Date date_deb,date_fin,time;
+    private String titre, description, adresse, categorie, image;
+    private Date date_deb, date_fin;
+    private String time;
 
     public Evenement(String titre, String description) {
         this.titre = titre;
@@ -26,34 +28,35 @@ public class Evenement {
         this.id = id;
     }
 
-    public Evenement(int nbr_max, String titre, String description, String adresse,Date date_deb,Date date_fin,String categorie,String image) {
+    public Evenement(int nbr_max, String titre, String description, String adresse, Date date_deb, Date date_fin, String categorie, String image, String time) {
         this.nbr_max = nbr_max;
         this.titre = titre;
         this.description = description;
         this.adresse = adresse;
-         this.date_deb = date_deb;
+        this.date_deb = date_deb;
         this.date_fin = date_fin;
         this.categorie = categorie;
- this.image = image;
+        this.image = image;
+        this.time = time;
     }
-        public Evenement(int id,int nbr_max, String titre, String description, String adresse,Date date_deb,Date date_fin,String categorie,String image) {
-        this.id=id;
+
+    public Evenement(int id, int nbr_max, String titre, String description, String adresse, Date date_deb, Date date_fin, String categorie, String image, String time) {
+        this.id = id;
         this.nbr_max = nbr_max;
         this.titre = titre;
         this.description = description;
         this.adresse = adresse;
-         this.date_deb = date_deb;
+        this.date_deb = date_deb;
         this.date_fin = date_fin;
         this.categorie = categorie;
- this.image = image;
+        this.image = image;
+        this.time = time;
     }
-    
-    
 
     public Evenement() {
     }
 
-    public Evenement(int id, String titre, String description, Date date_deb, Date date_fin, Date time) {
+    public Evenement(int id, String titre, String description, Date date_deb, Date date_fin, String time) {
         this.id = id;
         this.titre = titre;
         this.description = description;
@@ -62,7 +65,7 @@ public class Evenement {
         this.time = time;
     }
 
-    public Evenement(String titre, String description, Date date_deb, Date date_fin, Date time) {
+    public Evenement(String titre, String description, Date date_deb, Date date_fin, String time) {
         this.titre = titre;
         this.description = description;
         this.date_deb = date_deb;
@@ -78,7 +81,7 @@ public class Evenement {
         this.nbr_max = nbr_max;
     }
 
-   public String getCategorie() {
+    public String getCategorie() {
         return categorie;
     }
 
@@ -93,7 +96,6 @@ public class Evenement {
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
-    
 
     public int getId() {
         return id;
@@ -135,11 +137,11 @@ public class Evenement {
         this.date_fin = date_fin;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -150,7 +152,6 @@ public class Evenement {
     public void setImage(String image) {
         this.image = image;
     }
-
 
     @Override
     public String toString() {

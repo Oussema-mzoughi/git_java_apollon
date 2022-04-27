@@ -54,31 +54,33 @@ public class AffichageEventsController implements Initializable {
     private TextField txrecherche;
     @FXML
     private VBox pubvbox;
-  public static String numTelephone;
- public static Evenement eventActuelle;
+    
+    public static String numTelephone;
+    public static Evenement eventActuelle;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    EvenementServices pss = new EvenementServices();
- try {
-   List<Evenement> listEvenement = pss.ShowEvenement();
-  for (int i = 0; i < listEvenement.size(); i++) {
-            pubvbox.getChildren().add(creepub(listEvenement.get(i)));
-        }
- } catch (SQLException ex) {        }
-      
-     
-    }    
-
- public Parent creepub(Evenement evenement) {
-        Parent modelePub;
-CommentaireServices CommentaireServices = new CommentaireServices();
-EvenementServices evenementServices =new EvenementServices();
-  
+        EvenementServices pss = new EvenementServices();
         try {
-             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            List<Evenement> listEvenement = pss.ShowEvenement();
+            for (int i = 0; i < listEvenement.size(); i++) {
+                pubvbox.getChildren().add(creepub(listEvenement.get(i)));
+            }
+        } catch (SQLException ex) {
+        }
+
+    }
+
+    public Parent creepub(Evenement evenement) {
+        Parent modelePub;
+        CommentaireServices CommentaireServices = new CommentaireServices();
+        EvenementServices evenementServices = new EvenementServices();
+
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             modelePub = FXMLLoader.load(getClass().getResource("/edu/esprit/gui/ModelEvent.fxml"));
             ((Text) ((AnchorPane) modelePub).getChildren().get(0)).setText(evenement.getTitre());
             ((Text) ((AnchorPane) modelePub).getChildren().get(1)).setText(evenement.getDescription());
@@ -86,15 +88,16 @@ EvenementServices evenementServices =new EvenementServices();
             ((Text) ((AnchorPane) modelePub).getChildren().get(8)).setText(evenement.getAdresse());
             ((Text) ((AnchorPane) modelePub).getChildren().get(9)).setText(dateFormat.format(evenement.getDate_fin()));
             ((Text) ((AnchorPane) modelePub).getChildren().get(13)).setText(Integer.toString(evenement.getNbr_max()));
+            ((Text) ((AnchorPane) modelePub).getChildren().get(14)).setText(evenement.getTime().toString());
 
             ((Button) ((AnchorPane) modelePub).getChildren().get(5)).setOnAction((event) -> {
                 String textComm = ((TextField) ((AnchorPane) modelePub).getChildren().get(4)).getText();
                 Date date = new Date(System.currentTimeMillis());
-                 java.sql.Date sqlDate2 = new java.sql.Date(date.getTime());
+                java.sql.Date sqlDate2 = new java.sql.Date(date.getTime());
                 java.sql.Date dateCommentaire = sqlDate2;
-                Commentaire c = new Commentaire(evenement.getId(),dateCommentaire, textComm);
+                Commentaire c = new Commentaire(evenement.getId(), dateCommentaire, textComm);
 
-                 CommentaireServices.ajouterCommentaire(c);
+                CommentaireServices.ajouterCommentaire(c);
                 VBox commentaireContainer = ((VBox) ((AnchorPane) modelePub).getChildren().get(3));
                 if (!commentaireContainer.getChildren().contains(commentaireContainer)) {
                     commentaireContainer.getChildren().add(creerCommentaire(c, commentaireContainer));
@@ -106,15 +109,15 @@ EvenementServices evenementServices =new EvenementServices();
 
             });
 
-                ((Button) ((AnchorPane) modelePub).getChildren().get(2)).setOnAction((event) -> {
-             try {
-                 evenementServices.ParticiperEvent(evenement);
-                 evenementServices.udpatePerticiper(evenement.getId(),evenement.getNbr_max()-1);
-                ((Text) ((AnchorPane) modelePub).getChildren().get(13)).setText(Integer.toString(evenement.getNbr_max()));
-                JOptionPane.showMessageDialog(null, "Vouz avez Participer à l'evenement ' "+evenement.getTitre()+" '");
-            } catch (SQLException ex) {
-                     Logger.getLogger(AffichageEventsController.class.getName()).log(Level.SEVERE, null, ex);
-                 }
+            ((Button) ((AnchorPane) modelePub).getChildren().get(2)).setOnAction((event) -> {
+                try {
+                    evenementServices.ParticiperEvent(evenement);
+                    evenementServices.udpatePerticiper(evenement.getId(), evenement.getNbr_max() - 1);
+                    ((Text) ((AnchorPane) modelePub).getChildren().get(13)).setText(Integer.toString(evenement.getNbr_max()));
+                    JOptionPane.showMessageDialog(null, "Vouz avez Participer à l'evenement ' " + evenement.getTitre() + " '");
+                } catch (SQLException ex) {
+                    Logger.getLogger(AffichageEventsController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
 
             List<Commentaire> listCommentaire = CommentaireServices.getAllCommentairesByEvent(evenement.getId());
@@ -136,8 +139,8 @@ EvenementServices evenementServices =new EvenementServices();
         return null;
     }
 
-private Parent creerCommentaire(Commentaire commentaire, VBox commentaireContainer) {
-CommentaireServices CommentaireServices = new CommentaireServices();
+    private Parent creerCommentaire(Commentaire commentaire, VBox commentaireContainer) {
+        CommentaireServices CommentaireServices = new CommentaireServices();
         try {
             Parent modeleCommentaire = FXMLLoader.load(
                     getClass().getResource("/edu/esprit/gui/ModeleCommentaire.fxml")
@@ -177,7 +180,6 @@ CommentaireServices CommentaireServices = new CommentaireServices();
                 commentaireContainer.getChildren().removeAll(modeleCommentaire);
                 CommentaireServices.supprimerCommentaire(commentaire.getId());
                 JOptionPane.showMessageDialog(null, "Commentaire supprimer");
-
             });
             return modeleCommentaire;
         } catch (IOException ex) {
@@ -186,14 +188,14 @@ CommentaireServices CommentaireServices = new CommentaireServices();
         return null;
     }
 
-   @FXML
+    @FXML
     private void ajouter(ActionEvent event) {
 //        MainWindowController.chargerInterface(
 //                getClass().getResource("/app/gui/front_end/candidat/publication/Ajout.fxml")
 //        );
     }
 
- private void Modifier(ActionEvent event, Evenement evenement) {
+    private void Modifier(ActionEvent event, Evenement evenement) {
 
 //        eventActuelle = evenement;
 //        MainWindowController.chargerInterface(
@@ -201,7 +203,7 @@ CommentaireServices CommentaireServices = new CommentaireServices();
 //        );
     }
 
-private void Supprimer(ActionEvent event, Evenement evenement) throws SQLDataException {
+    private void Supprimer(ActionEvent event, Evenement evenement) throws SQLDataException {
 //        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 //        alert.setTitle("Suppression");
 //        alert.setHeaderText(null);
@@ -219,7 +221,7 @@ private void Supprimer(ActionEvent event, Evenement evenement) throws SQLDataExc
 
     @FXML
     private void recherche(KeyEvent event) {
-EvenementServices pss = new EvenementServices();
+        EvenementServices pss = new EvenementServices();
         System.out.println("test 1");
         pubvbox.getChildren().clear();
         System.out.println("test 2");
@@ -233,16 +235,15 @@ EvenementServices pss = new EvenementServices();
         }
     }
 
- @FXML
+    @FXML
     private void Reponsess(ActionEvent event) throws IOException {
-                            Parent page1 = FXMLLoader.load(getClass().getResource("AfficherEvenement.fxml"));
+        Parent page1 = FXMLLoader.load(getClass().getResource("AfficherEvenement.fxml"));
         Scene scene = new Scene(page1);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        
-        
-    } 
-    
+
+    }
+
 }
